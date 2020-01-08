@@ -1,20 +1,67 @@
 package com.company;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+
+import static com.company.Verifications.*;
+
 public class Game {
-    private numberOfPlayers;
-    private List<Player> :players;
+    private int numberOfPlayers;
+    private List<Player> Players;
 
     public void InitGame() {
         System.out.println("Bienvenue au jeu ROBOT TURTLE !");
-
-    }
-
-    private boolean NewGame() {
-        System.out.println("Souhaitez vous faire une partie de ROBOT TURTLE ?");
-        do {
-            entre = sc.nextline();
+        boolean newGame = AskNewGame();
+        if (!newGame) {
+            System.out.println("Merci d'avoir joué !");
+        } else {
+            numberOfPlayers = AskNumberOfPlayers();
+            for (int i = 0; i < numberOfPlayers; i++) {
+                String newPlayer = AskNewPlayer(i + 1);
+                Player newPLayer = new Player();
+                Players.add(newPLayer);
+            }
 
         }
     }
 
+    private boolean AskNewGame() {
+        String entre;
+        do {
+            System.out.println("Souhaitez vous faire une partie de ROBOT TURTLE ?");
+            entre = scTxt.nextLine();
+        } while (!entre.equals("oui") && !entre.equals("non") && !entre.equals("o") && !entre.equals("n"));
+        return entre.equals("oui") || entre.equals("o");
+    }
+
+    private int AskNumberOfPlayers() {
+        int entre;
+        do {
+            System.out.println("Combien y aura t-il de joueurs ?");
+            entre = scNb.nextInt();
+        } while ((entre != 2) && (entre != 3) && (entre != 4));
+        return entre;
+    }
+
+    private String AskNewPlayer(int i) {
+        String entre;
+        do {
+            System.out.println("Quel est le pseudo du joueur " + i + " ?");
+            entre = scTxt.nextLine();
+        } while (!entre.isEmpty());
+        return entre;
+    }
+
+    private void ChooseTurnOrder(){
+        Random rand = new Random();
+        List<Integer> index = null;
+        for(int i = 0; i < numberOfPlayers; i++) {
+            index.add(i+1);
+        }
+        for (int i = 0; i < numberOfPlayers; i++) {
+            int randomIndex = rand.nextInt(index.size());
+            Integer randomPlayer = index.get(randomIndex);
+        }
+    }
 }
