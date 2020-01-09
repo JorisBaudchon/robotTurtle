@@ -74,6 +74,6 @@ public class Game {
     }
 
     private void PlaceJewel(){
-        
+
     }
 }

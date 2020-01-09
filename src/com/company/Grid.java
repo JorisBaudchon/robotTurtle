@@ -9,17 +9,13 @@ public class Grid {
         grid = new Cell[8][8];
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                grid[i][j]=new Cell();
+                grid[i][j] = new Cell();
             }
         }
-        switch (numberOfPlayers) {
-            case (2):
-                for (int i = 0; i < 8; i++) {
-                    //grid[7][i]=;
-                }
-                break;
-            case (3):
-                break;
+        if (numberOfPlayers == 2 || numberOfPlayers == 3) {
+            for (int i = 0; i < 8; i++) {
+                //grid[7][i]=;
+            }
         }
     }
 }
