@@ -9,7 +9,9 @@ public class Cell {
     boolean isEmpty;
     String jewel;
     String turtle;
-    List<Integer> position;
+    int positionX;
+    int positionY;
+
 
     public boolean isAnIceWall() {
         return isAnIceWall;
