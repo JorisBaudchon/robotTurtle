@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import static com.company.Verifications.*;
-import static com.company.Player.*;
-
+import com.company.Player.*;
+import static com.company.Grid.*;
 public class Game {
     private int numberOfPlayers;
     private List<Player> Players;
@@ -22,7 +22,10 @@ public class Game {
                 Player newPLayer = new Player();
                 Players.add(newPLayer);
             }
-
+            InitTurnOrder();
+            InitGrid(numberOfPlayers);
+            PlaceTurtle();
+            PlaceJewel();
         }
     }
 
@@ -61,8 +64,16 @@ public class Game {
         }
         for (Player player : Players) {
             int randomIndex = rand.nextInt(index.size());
-            this.player.setPlayerTurn(randomIndex);
+            player.setPlayerTurn(randomIndex);
             index.remove(randomIndex);
         }
+    }
+
+    private void PlaceTurtle(){
+
+    }
+
+    private void PlaceJewel(){
+        
     }
 }
