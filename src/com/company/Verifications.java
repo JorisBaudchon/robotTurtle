@@ -21,6 +21,7 @@ public class Verifications {
         } else {
             return "error";
         }
+        return "error";
     }
 
     public static

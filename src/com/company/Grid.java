@@ -14,24 +14,44 @@ public class Grid {
         }
         if (numberOfPlayers == 2 || numberOfPlayers == 3) {
             for (int i = 0; i < 8; i++) {
-                //grid[7][i]=;
+                grid[7][i].setAWall();
             }
         }
     }
 
-    void PlaceJewel(int numberOfPlayers) {
+    static void PlaceJewel(int numberOfPlayers) {
         switch (numberOfPlayers) {
             case 2:
-                this.grid[3][7].setJewel("green");
+                grid[3][7].setJewel("green");
                 break;
             case 3:
-                this.grid[0][7].setJewel("purple");
-                this.grid[3][7].setJewel("green");
-                this.grid[6][7].setJewel("blue");
+                grid[0][7].setJewel("purple");
+                grid[3][7].setJewel("green");
+                grid[6][7].setJewel("blue");
                 break;
             case 4:
-                this.grid[1][7].setJewel("purple");
-                this.grid[7][7].setJewel("blue");
+                grid[1][7].setJewel("purple");
+                grid[7][7].setJewel("blue");
+                break;
+        }
+    }
+
+    static void PlaceTurtle(int numberOfPlayers) {
+        switch (numberOfPlayers) {
+            case 2:
+                grid[1][0].setTurtle("orange");
+                grid[5][0].setTurtle("green");
+                break;
+            case 3:
+                grid[1][0].setTurtle("orange");
+                grid[3][0].setTurtle("green");
+                grid[6][0].setTurtle("blue");
+                break;
+            case 4:
+                grid[0][0].setTurtle("orange");
+                grid[2][0].setTurtle("green");
+                grid[5][0].setTurtle("blue");
+                grid[7][0].setTurtle("yellow");
                 break;
         }
     }

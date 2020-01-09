@@ -67,7 +67,8 @@ public class Cell {
     }
 
     public void setTurtle(String turtle) {
-        turtle = turtle;
+        this.turtle = turtle;
+        this.isATurtle=true;
     }
 }
 
