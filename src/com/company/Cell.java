@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.List;
+
 public class Cell {
     boolean isAWall;
     boolean isAnIceWall;
@@ -7,6 +9,7 @@ public class Cell {
     boolean isEmpty;
     String jewel;
     String turtle;
+    List<Integer> position;
 
     public boolean isAnIceWall() {
         return isAnIceWall;
@@ -30,6 +33,10 @@ public class Cell {
 
     public String getJewel() {
         return jewel;
+    }
+
+    public List<Integer> getPosition() {
+        return position;
     }
 
     public void setAnIceWall() {

@@ -24,8 +24,8 @@ public class Game {
             }
             InitTurnOrder();
             InitGrid(numberOfPlayers);
-            PlaceTurtle();
-            PlaceJewel();
+            PlaceTurtle(numberOfPlayers);
+            PlaceJewel(numberOfPlayers);
         }
     }
 
@@ -69,11 +69,11 @@ public class Game {
         }
     }
 
-    private void PlaceTurtle(){
+    private void InitTurtle(int numberOfPlayers){
 
     }
 
-    private void PlaceJewel(){
+    private void InitJewel(int numberOfPlayers){
 
     }
 }
