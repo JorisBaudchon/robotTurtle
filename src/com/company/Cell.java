@@ -1,6 +1,11 @@
 package com.company;
 
 public class Cell {
-    boolean wall;
-    boolean 
+    boolean isAWall;
+    boolean IsAnIceWall;
+    boolean Jewel;
+    String Turtle;
+    boolean Empty;
+
+
 }
