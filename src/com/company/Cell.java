@@ -46,6 +46,10 @@ public class Cell {
         return this.positionX;
     }
 
+    public int getPositionY(int positionX, int positionY) {
+        return this.positionY;
+    }
+
     public void setAnIceWall(int positionX, int positionY) {
         this.isAnIceWall = true;
     }
