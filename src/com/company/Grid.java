@@ -18,6 +18,17 @@ public class Grid {
             }
         }
     }
+    public static void placeJewel(int numberOfPlayers){
+        switch (numberOfPlayers){
+            case 2 :
+                grid[][]
+                break;
+            case 3 :
+                break;
+            case 4 :
+                break;
+        }
+    }
 }
 
 
