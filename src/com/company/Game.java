@@ -3,8 +3,8 @@ package com.company;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-
 import static com.company.Verifications.*;
+import static com.company.Player.*;
 
 public class Game {
     private int numberOfPlayers;
@@ -14,7 +14,7 @@ public class Game {
         System.out.println("Bienvenue au jeu ROBOT TURTLE !");
         boolean newGame = AskNewGame();
         if (!newGame) {
-            System.out.println("Merci d'avoir joué !");
+            System.out.println("Merci d'être venu !");
         } else {
             numberOfPlayers = AskNumberOfPlayers();
             for (int i = 0; i < numberOfPlayers; i++) {
@@ -53,15 +53,16 @@ public class Game {
         return entre;
     }
 
-    private void ChooseTurnOrder(){
+    private void InitTurnOrder(){
         Random rand = new Random();
         List<Integer> index = null;
         for(int i = 0; i < numberOfPlayers; i++) {
             index.add(i+1);
         }
-        for (int i = 0; i < numberOfPlayers; i++) {
+        for (Player player : Players) {
             int randomIndex = rand.nextInt(index.size());
-            Integer randomPlayer = index.get(randomIndex);
+            this.player.setPlayerTurn(randomIndex);
+            index.remove(randomIndex);
         }
     }
 }
