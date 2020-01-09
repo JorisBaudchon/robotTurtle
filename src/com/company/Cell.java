@@ -14,56 +14,56 @@ public class Cell {
     int positionY;
 
 
-    public boolean isAnIceWall() {
-        return isAnIceWall;
+    public boolean isAnIceWall(int positionX, int positionY) {
+        return this.isAnIceWall;
     }
 
-    public boolean isAWall() {
-        return isAWall;
+    public boolean isAWall(int positionX, int positionY) {
+        return this.isAWall;
     }
 
-    public boolean isEmpty() {
-        return isEmpty;
+    public boolean isEmpty(int positionX, int positionY) {
+        return this.isEmpty;
     }
 
-    public boolean isAJewel() {
-        return isAJewel;
+    public boolean isAJewel(int positionX, int positionY) {
+        return this.isAJewel;
     }
 
-    public boolean isATurtle() {
-        return isATurtle;
+    public boolean isATurtle(int positionX, int positionY) {
+        return this.isATurtle;
     }
 
-    public String getTurtle() {
-        return turtle;
+    public String getTurtle(int positionX, int positionY) {
+        return this.turtle;
     }
 
-    public String getJewel() {
-        return jewel;
+    public String getJewel(int positionX, int positionY) {
+        return this.jewel;
     }
 
-    public List<Integer> getPosition() {
-        return position;
+    public int getPositionX(int positionX, int positionY) {
+        return this.positionX;
     }
 
-    public void setAnIceWall() {
+    public void setAnIceWall(int positionX, int positionY) {
         this.isAnIceWall = true;
     }
 
-    public void setAWall() {
+    public void setAWall(int positionX, int positionY) {
         this.isAWall = true;
     }
 
-    public void setEmpty() {
+    public void setEmpty(int positionX, int positionY) {
         this.isEmpty = true;
     }
 
-    public void setJewel(String jewelColor) {
-        isAJewel = true;
-        jewel=jewelColor;
+    public void setJewel(String jewelColor, int positionX, int positionY) {
+        this.isAJewel = true;
+        this.jewel=jewelColor;
     }
 
-    public void setTurtle(String turtle) {
+    public void setTurtle(String turtle, int positionX, int positionY) {
         turtle = turtle;
     }
 }
