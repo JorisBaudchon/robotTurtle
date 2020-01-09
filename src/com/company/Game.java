@@ -73,7 +73,4 @@ public class Game {
 
     }
 
-    private void InitJewel(int numberOfPlayers){
-
-    }
 }
