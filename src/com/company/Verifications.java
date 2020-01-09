@@ -22,6 +22,7 @@ public class Verifications {
         }else if (cell.isAJewel() == true) {
             return "jewel";
         }
+        return "error";
     }
 
 
