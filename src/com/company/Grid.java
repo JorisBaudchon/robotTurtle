@@ -21,7 +21,7 @@ public class Grid {
     public static void placeJewel(int numberOfPlayers){
         switch (numberOfPlayers){
             case 2 :
-                grid[][]
+                this.grid[0][1];
                 break;
             case 3 :
                 break;
