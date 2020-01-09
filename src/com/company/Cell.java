@@ -7,6 +7,7 @@ public class Cell {
     boolean isAnIceWall;
     boolean isAJewel;
     boolean isEmpty;
+    boolean isATurtle;
     String jewel;
     String turtle;
     int positionX;
@@ -25,8 +26,12 @@ public class Cell {
         return isEmpty;
     }
 
-    public boolean isJewel() {
+    public boolean isAJewel() {
         return isAJewel;
+    }
+
+    public boolean isATurtle() {
+        return isATurtle;
     }
 
     public String getTurtle() {
