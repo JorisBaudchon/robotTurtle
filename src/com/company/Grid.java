@@ -18,14 +18,15 @@ public class Grid {
             }
         }
     }
-    public static void placeJewel(int numberOfPlayers){
-        switch (numberOfPlayers){
-            case 2 :
-                this.grid[0][1];
+
+    public void placeJewel(int numberOfPlayers) {
+        switch (numberOfPlayers) {
+            case 2:
+                this.grid[0][1].setAJewel("red");
                 break;
-            case 3 :
+            case 3:
                 break;
-            case 4 :
+            case 4:
                 break;
         }
     }
