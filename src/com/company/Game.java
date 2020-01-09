@@ -68,9 +68,4 @@ public class Game {
             index.remove(randomIndex);
         }
     }
-
-    private void InitTurtle(int numberOfPlayers){
-
-    }
-
 }
