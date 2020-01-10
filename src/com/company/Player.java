@@ -93,8 +93,8 @@ public class Player {
         Collections.shuffle(this.deck);
     }
 
-    public void drawUntilHandIsFull() {
-        for (int i = 0; i < nbOfCardsMaxInHand; i++) {
+    public void drawUntilHandIsFull(int nbOfCardsInHand) {
+        for (int i = 0; i < (nbOfCardsMaxInHand-nbOfCardsInHand); i++) {
             this.hand.add(this.deck.get(0));
             this.deck.remove(0);
         }
@@ -106,7 +106,7 @@ public class Player {
 
     public void initHand() {
         this.hand = new ArrayList<>();
-        drawUntilHandIsFull();
+        drawUntilHandIsFull(0);
     }
 
     public void initWallHand() {
