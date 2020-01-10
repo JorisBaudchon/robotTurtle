@@ -156,7 +156,6 @@ public class Game {
                 grid.displayGridConsole();
                 showCardHand(player);
                 discardEndTurn(player);
-                player.drawUntilHandIsFull();
                 showCardHand(player);
                 break;
             case 3:
@@ -204,6 +203,7 @@ public class Game {
                     wantToDiscard = scTxt.nextLine();
                 } while (!wantToDiscard.equals("oui") && !wantToDiscard.equals("non") && !wantToDiscard.equals("o") && !wantToDiscard.equals("n"));
             } while (wantToDiscard.equals("oui") || wantToDiscard.equals("o"));
+            player.drawUntilHandIsFull(deletedCardCount);
         }
 
     }
