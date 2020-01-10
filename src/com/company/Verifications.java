@@ -22,7 +22,7 @@ public class Verifications {
             return "error";
         }
     }
-    
+
 
 }
 
