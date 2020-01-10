@@ -104,4 +104,5 @@ public class Move extends Grid {
         player.setPositionY(positionY);
         player.setPositionX(positionX);
     }
+
 }

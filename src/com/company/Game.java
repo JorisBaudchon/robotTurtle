@@ -2,11 +2,12 @@ package com.company;
 
 import java.util.*;
 
-import static com.company.Verifications.*;
-
 public class Game {
+    public static Scanner scTxt = new Scanner(System.in);
+    public static Scanner scNb = new Scanner(System.in);
     private int numberOfPlayers;
     private ArrayList<Player> players = new ArrayList<>();
+    private ArrayList<Player> orderedPlayers = new ArrayList<>();
     private Grid grid = new Grid();
 
     public void initGame() {
@@ -33,8 +34,10 @@ public class Game {
                 player.initHand();
                 player.initWallHand();
             }
-            while (!endGameCondition()){
-
+            while (!endGameCondition()) {
+                for (Player player : orderedPlayers) {
+                    turn(player);
+                }
             }
 
         }
@@ -87,29 +90,57 @@ public class Game {
             for (int j = 0; j < numberOfPlayers; j++) {
                 if (players.get(j).getPlayerTurn() == i) {
                     System.out.println((players.get(j)).getPlayerTurn() + ". " + (players.get(j)).getPseudo());
+                    this.orderedPlayers.add(players.get(j));
                 }
             }
         }
     }
 
-    public void execute() {
-
+    public boolean endGameCondition() {
+        int nbFinishedPlayers = 0;
+        for (int i = 0; i < numberOfPlayers; i++) {
+            if (players.get(i).isFinished()) {
+                nbFinishedPlayers = nbFinishedPlayers + 1;
+            }
+        }
+        if (nbFinishedPlayers < (numberOfPlayers - 1)) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
-    public void buildWall() {
-
-    }
-
-    public void completeProgram() {
-
-    }
-    public boolean endGameCondition(){
-        switch (numberOfPlayers){
-            case (2):
+    public void turn(Player player) {
+        int entre;
+        System.out.println("C'est le tour de " + player.getPseudo());
+        System.out.println(player.getHand());
+        System.out.println(player.getWallCardHand());
+        System.out.println("Que souhaitez vous faire ?");
+        System.out.println("Entrez 1 pour COMPLETER LE PROGRAMME");
+        System.out.println("Entrez 2 pour CONSTRUIRE UN MUR");
+        System.out.println("Entrez 3 pour EXECUTER LE PROGRAMME");
+        do {
+            entre = scNb.nextInt();
+        } while (!(entre == 1) && !(entre == 2) && !(entre == 3));
+        switch (entre) {
+            case 1:
                 break;
-            case (3):
+            case 2:
+                int wallCardChoosed;
+                System.out.println("Quel mur voulez vous jouer ?");
+                for (int i = 0; i < (player.getWallCardHand()).size(); i++) {
+                    System.out.println((i + 1) + player.wallCardHand.get(i).getWallCardType());
+                }
+                wallCardChoosed = scNb.nextInt();
+                int xWall;
+                int yWall;
+                System.out.println("A quelles coordonnées souhaitez vous le placer ?");
+                System.out.println("X ?");
+                
+                System.out.println("Y ?");
+
                 break;
-            case (4):
+            case 3:
                 break;
         }
     }
