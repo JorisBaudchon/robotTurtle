@@ -52,7 +52,7 @@ public class Player {
 	}
 
     public int getPositionX() {
-        return positionX;
+        return this.positionX;
     }
 
     public void setPositionX(int positionX) {
@@ -60,7 +60,7 @@ public class Player {
     }
 
     public int getPositionY() {
-        return positionY;
+        return this.positionY;
     }
 
     public void setPositionY(int positionX) {
