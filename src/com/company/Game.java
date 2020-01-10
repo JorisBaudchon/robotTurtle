@@ -31,6 +31,7 @@ public class Game {
                 Player player = players.get(i);
                 player.initDeck();
                 player.initHand();
+                player.initWallHand();
             }
 
         }
