@@ -21,6 +21,7 @@ public class Cell {
         return this.jewel;
     }
 
+
     public void setJewel(String jewelColor) {
         this.state = 'J';
         this.jewel = jewelColor;
