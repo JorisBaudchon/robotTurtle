@@ -14,14 +14,14 @@ public class Game {
 
     public void initGame() {
         System.out.println("Bienvenue au jeu ROBOT TURTLE !");
-        boolean newGame = AskNewGame();
+        boolean newGame = askNewGame();
         if (!newGame) {
             System.out.println("Merci d'être venu !");
         } else {
-            ArrayList<Player> Players = new ArrayList<Player>();
-            numberOfPlayers = AskNumberOfPlayers();
+            ArrayList<Player> Players = new ArrayList<>();
+            numberOfPlayers = askNumberOfPlayers();
             for (int i = 0; i < numberOfPlayers; i++) {
-                String newPlayer = AskNewPlayer(i + 1);
+                String newPlayer = askNewPlayer(i + 1);
                 Player player = new Player(newPlayer, 1);
                 Players.add(player);
             }
@@ -34,7 +34,7 @@ public class Game {
         }
     }
 
-    private boolean AskNewGame() {
+    private boolean askNewGame() {
         String entre;
         do {
             System.out.println("Souhaitez vous faire une partie de ROBOT TURTLE ?");
@@ -43,7 +43,7 @@ public class Game {
         return entre.equals("oui") || entre.equals("o");
     }
 
-    private int AskNumberOfPlayers() {
+    private int askNumberOfPlayers() {
         int entre;
         do {
             System.out.println("Combien y aura t-il de joueurs ?");
@@ -52,7 +52,7 @@ public class Game {
         return entre;
     }
 
-    private String AskNewPlayer(int i) {
+    private String askNewPlayer(int i) {
         String entre;
         do {
             System.out.println("Quel est le pseudo du joueur " + i + " ?");

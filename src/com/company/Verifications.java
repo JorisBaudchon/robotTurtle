@@ -7,7 +7,7 @@ public class Verifications {
     public static Scanner scTxt = new Scanner(System.in);
     public static Scanner scNb = new Scanner(System.in);
 
-    public static String CellStatut(Cell cell) {
+    public String cellStatut(Cell cell) {
         if (cell.isEmpty() == true) {
             return "empty";
         } else if (cell.isAJewel() == true) {
