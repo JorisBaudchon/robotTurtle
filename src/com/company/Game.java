@@ -113,8 +113,8 @@ public class Game {
     public void turn(Player player) {
         int entre;
         System.out.println("C'est le tour de " + player.getPseudo());
-        System.out.println(player.getHand());
-        System.out.println(player.getWallCardHand());
+        showCardHand(player);
+        showWallCardHand(player);
         System.out.println("Que souhaitez vous faire ?");
         System.out.println("Entrez 1 pour COMPLETER LE PROGRAMME");
         System.out.println("Entrez 2 pour CONSTRUIRE UN MUR");
@@ -129,19 +129,82 @@ public class Game {
                 int wallCardChoosed;
                 System.out.println("Quel mur voulez vous jouer ?");
                 for (int i = 0; i < (player.getWallCardHand()).size(); i++) {
-                    System.out.println((i + 1) + player.wallCardHand.get(i).getWallCardType());
+                    System.out.print((i + 1) + ". ");
+                    System.out.println(player.wallCardHand.get(i).getWallCardType());
                 }
                 wallCardChoosed = scNb.nextInt();
                 int xWall;
                 int yWall;
-                System.out.println("A quelles coordonnées souhaitez vous le placer ?");
-                System.out.println("X ?");
-                
-                System.out.println("Y ?");
-
+                boolean wallValide = false;
+                do {
+                    grid.displayGridConsole();
+                    System.out.println("A quelles coordonnées souhaitez vous le placer ?");
+                    System.out.println("X ?");
+                    xWall = scNb.nextInt();
+                    System.out.println("Y ?");
+                    yWall = scNb.nextInt();
+                    if (grid.grid[xWall][yWall].getState() == 'E') {
+                        System.out.println(player.wallCardHand.get(wallCardChoosed).getWallCardType());
+                        grid.grid[xWall][yWall].setState(player.wallCardHand.get(wallCardChoosed).getWallCardType());
+                        System.out.println(grid.grid[xWall][yWall].getState());
+                        wallValide = true;
+                    } else {
+                        System.out.println("Cet emplacement n'est pas valide, choisissez en un autre.");
+                    }
+                } while (!wallValide);
+                System.out.println("mouvement validé");
+                grid.displayGridConsole();
+                showCardHand(player);
+                discardEndTurn(player);
+                showCardHand(player);
                 break;
             case 3:
                 break;
         }
+    }
+
+    public void showWallCardHand(Player player) {
+        System.out.print("Voici vos murs disponibles :");
+        for (int i = 0; i < (player.getWallCardHand()).size(); i++) {
+            System.out.print(player.wallCardHand.get(i).getWallCardType() + "  ");
+        }
+    }
+
+    public void showCardHand(Player player) {
+        System.out.print("Voici votre main :");
+        for (int i = 0; i < (player.getCardHand()).size(); i++) {
+            System.out.print(player.hand.get(i).getCardType() + "  ");
+        }
+    }
+
+    public void discardEndTurn(Player player) {
+        String wantDefausse;
+        System.out.println("Souhaitez vous défausser des cartes ?");
+        do {
+            wantDefausse = scTxt.nextLine();
+        } while (!wantDefausse.equals("oui") && !wantDefausse.equals("non") && !wantDefausse.equals("o") && !wantDefausse.equals("n"));
+        if (wantDefausse.equals("oui") || wantDefausse.equals("o")) {
+            showCardHand(player);
+            int discardedCard;
+            String wantToDiscard;
+            int deletedCardCount = 0;
+            do {
+                System.out.println("Quelle carte voulez vous défausser ?");
+                for (int i = 0; i < (player.getCardHand()).size(); i++) {
+                    System.out.print((i + 1) + ". ");
+                    System.out.println(player.hand.get(i).getCardType());
+                }
+                discardedCard = scNb.nextInt();
+                discardedCard = discardedCard - 1;
+                deletedCardCount = deletedCardCount + 1;
+                player.discardCard(discardedCard);
+                System.out.println("Voulez vous supprimer une nouvelle carte ?");
+                do {
+                    wantToDiscard = scTxt.nextLine();
+                } while (!wantToDiscard.equals("oui") && !wantToDiscard.equals("non") && !wantToDiscard.equals("o") && !wantToDiscard.equals("n"));
+            } while (wantToDiscard.equals("oui") || wantToDiscard.equals("o"));
+            player.drawUntilHandIsFull(deletedCardCount);
+        }
+
     }
 }

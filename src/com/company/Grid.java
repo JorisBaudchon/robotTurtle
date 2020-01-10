@@ -13,7 +13,7 @@ public class Grid {
         }
         if (numberOfPlayers == 2 || numberOfPlayers == 3) {
             for (int i = 0; i < 8; i++) {
-                grid[i][7].setState('W');
+                grid[i][7].setState('S');
             }
         }
     }
@@ -66,8 +66,8 @@ public class Grid {
                     case ('E'):
                         ligne = ligne + 'E' + " ";
                         break;
-                    case ('W'):
-                        ligne = ligne + 'W' + " ";
+                    case ('S'):
+                        ligne = ligne + 'S' + " ";
                         break;
                     case ('I'):
                         ligne = ligne + 'I' + " ";

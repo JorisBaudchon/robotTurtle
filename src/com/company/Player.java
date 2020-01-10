@@ -5,7 +5,7 @@ import java.util.Collections;
 
 public class Player {
 
-    private ArrayList<Card> hand;
+    public ArrayList<Card> hand;
     private ArrayList<Card> deck;
     private ArrayList<Card> discard;
     public ArrayList<WallCard> wallCardHand;
@@ -93,17 +93,20 @@ public class Player {
         Collections.shuffle(this.deck);
     }
 
-    public void drawUntilHandIsFull() {
-        for (int i = 0; i < nbOfCardsMaxInHand; i++) {
+    public void drawUntilHandIsFull(int nbOfCardsInHand) {
+        for (int i = 0; i < (nbOfCardsMaxInHand-nbOfCardsInHand); i++) {
             this.hand.add(this.deck.get(0));
-            this.discard.add(this.deck.get(0));
             this.deck.remove(0);
         }
+    }
+    public void discardCard(int deletedCard){
+        this.discard.add(this.deck.get(0));
+        this.hand.remove(deletedCard);
     }
 
     public void initHand() {
         this.hand = new ArrayList<>();
-        drawUntilHandIsFull();
+        drawUntilHandIsFull(0);
     }
 
     public void initWallHand() {
@@ -122,7 +125,7 @@ public class Player {
         return finished;
     }
 
-    public ArrayList<Card> getHand() {
+    public ArrayList<Card> getCardHand() {
         return this.hand;
     }
 
