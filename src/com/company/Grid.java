@@ -62,27 +62,45 @@ public class Grid {
             String ligne = i + " | ";
             for (int j = 0; j <= 7; j++) {
                 char state = grid[i][j].getState();
-                        switch (state) {
-                            case ('E') :
-                            ligne = ligne + 'E' + " ";
-                            break;
-                            case ('W') :
-                                ligne = ligne + 'W' + " ";
-                                break;
-                            case ('I') :
-                                ligne = ligne + 'I' + " ";
-                                break;
-                            case ('T') :
-                                ligne = ligne + 'T' + " ";
-                                break;
-                            case ('J') :
-                                ligne = ligne + 'J' + " ";
-                                break;
-                        }
+                switch (state) {
+                    case ('E'):
+                        ligne = ligne + 'E' + " ";
+                        break;
+                    case ('W'):
+                        ligne = ligne + 'W' + " ";
+                        break;
+                    case ('I'):
+                        ligne = ligne + 'I' + " ";
+                        break;
+                    case ('T'):
+                        ligne = ligne + 'T' + " ";
+                        break;
+                    case ('J'):
+                        ligne = ligne + 'J' + " ";
+                        break;
+                }
             }
             total = total + ligne + "| \n";
         }
         System.out.println(total + "  +-----------------+");
+    }
+
+    public void BackToStart(Player player, int numberOfPlayers) {
+        String color = player.getColor();
+        switch (numberOfPlayers) {
+            case 3:
+                switch (color) {
+                    case "orange":
+                        grid[1][0].setTurtle("orange");
+                        break;
+                    case "green":
+                        grid[3][0].setTurtle("green");
+                        break;
+                    case "blue":
+                        grid[6][0].setTurtle("blue");
+                        break;
+                }
+        }
     }
 }
 
