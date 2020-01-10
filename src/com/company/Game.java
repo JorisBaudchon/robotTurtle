@@ -89,7 +89,7 @@ public class Game {
         
     }
     
-    public void completeProgramme(){
+    public void completeProgram(){
         
     }
 
