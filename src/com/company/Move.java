@@ -82,6 +82,27 @@ public class Move extends Grid {
 
     public void MoveForward(Player player){
         grid[player.getPositionX()][player.getPositionY()].setState('E');
-
+        char orientation = player.getOrientation();
+        int positionY=player.getPositionY();
+        int positionX=player.getPositionX();
+        String color = player.getColor();
+        switch(orientation) {
+            case 'N':
+                positionY=positionY-1;
+                break;
+            case 'W':
+                positionX=positionX-1;
+                break;
+            case 'E':
+                positionX=positionX+1;
+                break;
+            case 'S':
+                positionY = positionY+1;
+                break;
+        }
+        grid[positionX][positionY].setTurtle(color);
+        player.setPositionY(positionY);
+        player.setPositionX(positionX);
     }
+
 }
