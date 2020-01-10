@@ -1,9 +1,7 @@
 package com.company;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 
 public class Player {
 
@@ -104,19 +102,36 @@ public class Player {
     }
 
     public void initHand() {
-        ArrayList<Card> hand = new ArrayList<>();
+        this.hand = new ArrayList<>();
         drawUntilHandIsFull();
     }
 
     public void initWallHand() {
-        ArrayList<WallCard> wallCardHand = new ArrayList<>();
+        this.wallCardHand = new ArrayList<>();
         for (int i = 0; i < nbOfStoneWallCards; i++) {
             WallCard wallCard = new WallCard('S');
-            wallCardHand.add(wallCard);
+            this.wallCardHand.add(wallCard);
         }
-        for (int i = 0;i<nbOfIceWallCards;i++){
+        for (int i = 0; i < nbOfIceWallCards; i++) {
             WallCard wallCard = new WallCard('I');
-            wallCardHand.add(wallCard);
+            this.wallCardHand.add(wallCard);
         }
     }
+
+    public boolean isFinished() {
+        return finished;
+    }
+
+    public ArrayList<Card> getHand() {
+        return this.hand;
+    }
+
+    public ArrayList<WallCard> getWallCardHand() {
+        return this.wallCardHand;
+    }
+
+    public ArrayList<Card> getDeck() {
+        return this.deck;
+    }
 }
+
