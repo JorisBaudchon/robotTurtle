@@ -2,25 +2,23 @@ package com.company;
 
 public class Grid {
 
-    private static Cell[][] grid;
-    
+    private Cell[][] grid = new Cell[8][8];
 
-
-    public static void InitGrid(int numberOfPlayers) {
+    public void initGrid(int numberOfPlayers) {
         grid = new Cell[8][8];
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                grid[i][j].setEmpty();
+                grid[i][j] = new Cell();
             }
         }
         if (numberOfPlayers == 2 || numberOfPlayers == 3) {
             for (int i = 0; i < 8; i++) {
-                grid[7][i].setAWall();
+                grid[7][i].setState('W');
             }
         }
     }
 
-    public static void PlaceJewel(int numberOfPlayers) {
+    public void placeJewel(int numberOfPlayers) {
         switch (numberOfPlayers) {
             case 2:
                 grid[3][7].setJewel("green");
@@ -37,7 +35,7 @@ public class Grid {
         }
     }
 
-    public static void PlaceTurtle(int numberOfPlayers) {
+    public void placeTurtle(int numberOfPlayers) {
         switch (numberOfPlayers) {
             case 2:
                 grid[1][0].setTurtle("orange");
@@ -56,21 +54,36 @@ public class Grid {
                 break;
         }
     }
-	
-    public void displayGridConsole() {
-    	System.out.println("    0 1 2 3 4 5 6 7 \n  +-----------------+");
-    	String total = "";
-    	for (int i = 0; i <= 7; i++) {
-    		String ligne = i + " | ";
-        	for (int j = 0; j <= 7; j++) {
-        		ligne = ligne + grid[i][j] + " ";
-        	}
-        	total = total + ligne + "| \n";
-        }
-    	System.out.println(total + "  +-----------------+");
-    }
-    
 
+    public void displayGridConsole() {
+        System.out.println("    0 1 2 3 4 5 6 7 \n  +-----------------+");
+        String total = "";
+        for (int i = 0; i <= 7; i++) {
+            String ligne = i + " | ";
+            for (int j = 0; j <= 7; j++) {
+                char state = grid[i][j].getState();
+                        switch (state) {
+                            case ('E') :
+                            ligne = ligne + 'E' + " ";
+                            break;
+                            case ('W') :
+                                ligne = ligne + 'W' + " ";
+                                break;
+                            case ('I') :
+                                ligne = ligne + 'I' + " ";
+                                break;
+                            case ('T') :
+                                ligne = ligne + 'T' + " ";
+                                break;
+                            case ('J') :
+                                ligne = ligne + 'J' + " ";
+                                break;
+                        }
+            }
+            total = total + ligne + "| \n";
+        }
+        System.out.println(total + "  +-----------------+");
+    }
 }
 
 
