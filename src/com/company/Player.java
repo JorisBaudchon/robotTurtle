@@ -2,17 +2,23 @@ package com.company;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Player {
 
     public ArrayList<Card> hand = new ArrayList<Card>();
-    private ArrayDeque<Card> deck;
+    private Card[] deck;
     private int playerTurn;
     private String pseudo;
     private String color;
     private char orientation;
     private int positionX;
     private int positionY;
+    private int numberOfCardsInTheDeck;
+    private int numberOfBlueCardsInTheDeck;
+    private int numberOfYellowCardsInTheDeck;
+    private int numberOfPurpleCardsInTheDeck;
+    private int numberOfLaserCardsInTheDeck;
 
     public Player(String pseudo) {
         this.pseudo = pseudo;
@@ -36,20 +42,20 @@ public class Player {
     }
 
     public String getPseudo() {
-		return this.pseudo;
-	}
-    
+        return this.pseudo;
+    }
+
     public String getColor() {
-		return this.color;
-	}
-    
+        return this.color;
+    }
+
     public void setHand(ArrayList<Card> hand) {
-		this.hand = hand;
-	}
-    
-	public ArrayList<Card> getHand(){
-		return this.hand;
-	}
+        this.hand = hand;
+    }
+
+    public ArrayList<Card> getHand() {
+        return this.hand;
+    }
 
     public int getPositionX() {
         return this.positionX;
@@ -65,5 +71,34 @@ public class Player {
 
     public void setPositionY(int positionY) {
         this.positionY = positionY;
+    }
+
+    public void initDeck(Player player) {
+        player.deck = new Card[numberOfCardsInTheDeck];
+        Random rand = new Random();
+        ArrayList<Integer> index = new ArrayList<>();
+        for (int i = 0; i < numberOfCardsInTheDeck; i++) {
+            index.add(i);
+        }
+        for (int i = 0; i < numberOfBlueCardsInTheDeck; i++) {
+            int randomIndex = rand.nextInt(index.size());
+            deck.addBlueCard(index.get(randomIndex));
+            index.remove(randomIndex);
+        }
+        for (int i = 0; i < numberOfYellowCardsInTheDeck; i++) {
+            int randomIndex = rand.nextInt(index.size());
+            deck.addYellowCard(index.get(randomIndex));
+            index.remove(randomIndex);
+        }
+        for (int i = 0; i < numberOfPurpleCardsInTheDeck; i++) {
+            int randomIndex = rand.nextInt(index.size());
+            deck.addPurpleCard(index.get(randomIndex));
+            index.remove(randomIndex);
+        }
+        for (int i = 0; i < numberOfLaserCardsInTheDeck; i++) {
+            int randomIndex = rand.nextInt(index.size());
+            deck.addLaserCard(index.get(randomIndex));
+            index.remove(randomIndex);
+        }
     }
 }
