@@ -1,14 +1,16 @@
 package com.company;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+
 public class Player {
-    
-    private String couleur;
-    public List<Carte> main = new ArrayList<Carte>();
-    private List<Carte> pioche;
+
+    public ArrayList<Card> hand = new ArrayList<Card>();
+    private ArrayDeque<Card> deck;
     private int playerTurn;
     private String pseudo;
+    private String color;
     private char orientation;
-
 
     public Player(String pseudo) {
         this.pseudo = pseudo;
@@ -35,16 +37,16 @@ public class Player {
 		return this.pseudo;
 	}
     
-    public String couleurPlayer() {
-		return this.couleur;
+    public String colorPlayer() {
+		return this.color;
 	}
     
-    public void setMain(ArrayList<Carte> main) {
-		this.main = main;
+    public void setHand(ArrayList<Card> hand) {
+		this.hand = hand;
 	}
     
-	public List<Carte> getMain(){
-		return this.main;
+	public ArrayList<Card> getHand(){
+		return this.hand;
 	}
     
 
