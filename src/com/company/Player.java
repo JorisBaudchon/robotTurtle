@@ -9,7 +9,7 @@ public class Player {
     public ArrayList<Card> hand;
     private ArrayList<Card> deck;
     private ArrayList<Card> discard;
-    public ArrayDeque<Card> program;
+    private ArrayDeque<Card> program;
     public ArrayList<WallCard> wallCardHand;
     private int playerTurn;
     private String pseudo;

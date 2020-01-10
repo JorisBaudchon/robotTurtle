@@ -125,7 +125,7 @@ public class Game {
         switch (entre) {
             case 1:
                 System.out.println("Quelle carte voulez vous ajouter au programme ?");
-                player.program
+                player.program.
 
                 break;
             case 2:
