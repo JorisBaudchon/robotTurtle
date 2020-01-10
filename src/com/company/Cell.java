@@ -61,9 +61,9 @@ public class Cell {
         this.isEmpty = true;
     }
 
-    public void setJewel(String jewelColor) {
+    public void setJewel(String colorJewel) {
         this.isAJewel = true;
-        this.jewel = jewelColor;
+        this.jewel = colorJewel;
     }
 
     public void setTurtle(String turtle) {
