@@ -42,11 +42,11 @@ public class Player {
 		return this.color;
 	}
     
-    public void setMain(ArrayList<Card> main) {
+    public void setHand(ArrayList<Card> hand) {
 		this.hand = hand;
 	}
     
-	public ArrayList<Card> getMain(){
+	public ArrayList<Card> getHand(){
 		return this.hand;
 	}
     
