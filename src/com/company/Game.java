@@ -20,15 +20,14 @@ public class Game {
                 String newPlayer = askNewPlayer(i + 1);
                 Player player = new Player(newPlayer);
                 this.players.add(player);
-                System.out.println(this.players.get(i));
             }
-            InitTurnOrder();
+            initTurnOrder();
             showTurnOrder();
             grid.initGrid(numberOfPlayers);
             grid.placeTurtle(numberOfPlayers);
             grid.placeJewel(numberOfPlayers);
             grid.displayGridConsole();
-            //InitDeck(numberOfPlayers);
+            //initDeck(numberOfPlayers);
 
         }
     }
@@ -60,14 +59,13 @@ public class Game {
         return entre;
     }
 
-    private void InitTurnOrder() {
+    private void initTurnOrder() {
         Random rand = new Random();
         ArrayList<Integer> index = new ArrayList<>();
         for (int i = 0; i < numberOfPlayers; i++) {
             index.add(i + 1);
         }
         for (int i = 0; i < numberOfPlayers; i++) {
-            System.out.println(index);
             int randomIndex = rand.nextInt(index.size());
             Player player = this.players.get(i);
             player.setPlayerTurn(index.get(randomIndex));
@@ -76,8 +74,9 @@ public class Game {
     }
 
     private void showTurnOrder() {
+        System.out.println("Voici l'ordre de jeu :");
         for (int i = 0; i < numberOfPlayers; i++) {
-            System.out.println((players.get(i)).getPlayerTurn());
+            System.out.println((players.get(i)).getPlayerTurn()+". "+(players.get(i)).getPseudo());
         }
     }
     
