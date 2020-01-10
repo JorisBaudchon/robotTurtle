@@ -12,14 +12,13 @@ public class Verifications {
             return "empty";
         } else if (cell.isAJewel() == true) {
             return "jewel";
-        }
-        else if (cell.isAnIceWall() == true) {
+        } else if (cell.isAnIceWall() == true) {
             return "icewall";
-        }else if (cell.isAWall() == true) {
+        } else if (cell.isAWall() == true) {
             return "wall";
-        }else if (cell.isATurtle() == true) {
+        } else if (cell.isATurtle() == true) {
             return "turtle";
-        }else if (cell.isAJewel() == true) {
+        } else if (cell.isAJewel() == true) {
             return "jewel";
         }
         return "error";

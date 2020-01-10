@@ -1,8 +1,6 @@
 package com.company;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 import static com.company.Verifications.*;
 
@@ -11,9 +9,8 @@ import com.company.Player.*;
 import static com.company.Grid.*;
 
 public class Main {
-    private int numberOfPlayers;
-    private List<Player> Players;
-
+    private static int numberOfPlayers;
+    private ArrayList<Player> Players;
 
     public void main(String[] args) {
         InitGame();
@@ -26,11 +23,12 @@ public class Main {
         if (!newGame) {
             System.out.println("Merci d'être venu !");
         } else {
+            ArrayList<Player> Players = new ArrayList<Player>();
             numberOfPlayers = AskNumberOfPlayers();
             for (int i = 0; i < numberOfPlayers; i++) {
                 String newPlayer = AskNewPlayer(i + 1);
-                Player newPLayer = new Player();
-                Players.add(newPLayer);
+                Player player = new Player(newPlayer, 1);
+                Players.add(player);
             }
             InitTurnOrder();
             InitGrid(numberOfPlayers);
@@ -41,7 +39,7 @@ public class Main {
         }
     }
 
-    private boolean AskNewGame() {
+    private static boolean AskNewGame() {
         String entre;
         do {
             System.out.println("Souhaitez vous faire une partie de ROBOT TURTLE ?");
@@ -50,7 +48,7 @@ public class Main {
         return entre.equals("oui") || entre.equals("o");
     }
 
-    private int AskNumberOfPlayers() {
+    private static int AskNumberOfPlayers() {
         int entre;
         do {
             System.out.println("Combien y aura t-il de joueurs ?");
@@ -59,23 +57,26 @@ public class Main {
         return entre;
     }
 
-    private String AskNewPlayer(int i) {
+    private static String AskNewPlayer(int i) {
         String entre;
         do {
             System.out.println("Quel est le pseudo du joueur " + i + " ?");
             entre = scTxt.nextLine();
-        } while (!entre.isEmpty());
+        } while (entre.isEmpty());
         return entre;
     }
 
     private void InitTurnOrder() {
         Random rand = new Random();
-        List<Integer> index = null;
+        ArrayList<Integer> index = new ArrayList<>();
         for (int i = 0; i < numberOfPlayers; i++) {
             index.add(i + 1);
         }
-        for (Player player : Players) {
+        for (int i = 0; i < numberOfPlayers; i++) {
             int randomIndex = rand.nextInt(index.size());
+            System.out.println(Players);
+            Player player = Players.get(i);
+            System.out.println(player);
             player.setPlayerTurn(randomIndex);
             index.remove(randomIndex);
         }
