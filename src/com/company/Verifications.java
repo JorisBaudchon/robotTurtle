@@ -25,12 +25,5 @@ public class Verifications {
         }
     }
 
-    public static IsMovementPossible (){
-        if (CellStatut()=="empty"){
-
-        }
-
-    }
-
 }
 

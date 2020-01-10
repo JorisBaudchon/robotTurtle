@@ -4,13 +4,13 @@ public class Player {
     private int playerTurn;
     private String pseudo;
 
-    public Player(String pseudo, int playerTurn) {
+    public Player(String pseudo) {
         this.pseudo = pseudo;
-        this.playerTurn = playerTurn;
+        this.playerTurn = 4;
     }
 
     public int getPlayerTurn() {
-        return playerTurn;
+        return this.playerTurn;
     }
 
     public void setPlayerTurn(int playerTurn) {
