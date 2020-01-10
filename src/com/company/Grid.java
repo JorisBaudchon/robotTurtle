@@ -3,11 +3,10 @@ package com.company;
 public class Grid {
 
     private static Cell[][] grid;
-    private List<Player> players;
     
 
 
-    static void InitGrid(int numberOfPlayers) {
+    public static void InitGrid(int numberOfPlayers) {
         grid = new Cell[8][8];
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
@@ -21,7 +20,7 @@ public class Grid {
         }
     }
 
-    static void PlaceJewel(int numberOfPlayers) {
+    public static void PlaceJewel(int numberOfPlayers) {
         switch (numberOfPlayers) {
             case 2:
                 grid[3][7].setJewel("green");
@@ -38,7 +37,7 @@ public class Grid {
         }
     }
 
-    static void PlaceTurtle(int numberOfPlayers) {
+    public static void PlaceTurtle(int numberOfPlayers) {
         switch (numberOfPlayers) {
             case 2:
                 grid[1][0].setTurtle("orange");
@@ -70,13 +69,6 @@ public class Grid {
         }
     	System.out.println(total + "  +-----------------+");
     }
-    
-    public List<Player> getPlayers(){
-		return players;
-	}
-	public void setPlayers(List<Player> players) {
-		this.players = players;
-	}
     
 
 }
