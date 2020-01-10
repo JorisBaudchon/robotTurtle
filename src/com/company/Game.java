@@ -75,21 +75,25 @@ public class Game {
 
     private void showTurnOrder() {
         System.out.println("Voici l'ordre de jeu :");
-        for (int i = 0; i < numberOfPlayers; i++) {
-            System.out.println((players.get(i)).getPlayerTurn()+". "+(players.get(i)).getPseudo());
+        for (int i = 0; i < numberOfPlayers+1; i++) {
+            for (int j = 0; j < numberOfPlayers; j++) {
+                if (players.get(j).getPlayerTurn() == i) {
+                    System.out.println((players.get(j)).getPlayerTurn() + ". " + (players.get(j)).getPseudo());
+                }
+            }
         }
     }
-    
-    public void execute(){
-        
+
+    public void execute() {
+
     }
-    
-    public void buildWall(){
-        
+
+    public void buildWall() {
+
     }
-    
-    public void completeProgram(){
-        
+
+    public void completeProgram() {
+
     }
 
 }
