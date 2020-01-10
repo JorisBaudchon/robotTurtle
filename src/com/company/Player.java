@@ -2,12 +2,14 @@ package com.company;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 public class Player {
 
-    private Card[] hand;
-    private ArrayDeque<Card> deck;
+    private ArrayList<Card> hand;
+    private ArrayList<Card> deck;
+    private ArrayList<Card> discard;
     private int playerTurn;
     private String pseudo;
     private String color;
@@ -16,7 +18,6 @@ public class Player {
     private int positionY;
     private int nbOfCardsMaxInHand=5;
     private int nbOfCardsInHand;
-    private int nbOfCardsInDeck=37;
     private int nbOfBlueCardsInDeck=18;
     private int nbOfYellowCardsInDeck=8;
     private int nbOfPurpleCardsInDeck=8;
@@ -67,44 +68,36 @@ public class Player {
         this.positionY = positionY;
     }
 
-    public void initDeck() {
-        this.deck = new ArrayDeque<>();
-        Random rand = new Random();
-        ArrayList<Integer> index = new ArrayList<>();
-        for (int i = 0; i < nbOfCardsInDeck; i++) {
-            index.add(i);
-
-            this.deck.add(Card('N'));n
-        }
+    public void initDeck(Player player) {
+        player.deck = new ArrayList<>();
+        player.discard = new ArrayList<>();
         for (int i = 0; i < nbOfBlueCardsInDeck; i++) {
-            int randomIndex = rand.nextInt(index.size());
-            deck[randomIndex] = new Card('B');
-            index.remove(randomIndex);
+            Card card= new Card('B');
+            player.deck.add(card);
         }
         for (int i = 0; i < nbOfYellowCardsInDeck; i++) {
-            int randomIndex = rand.nextInt(index.size());
-            deck[randomIndex] = new Card('Y');
-            index.remove(randomIndex);
+            Card card= new Card('Y');
+            player.deck.add(card);
         }
         for (int i = 0; i < nbOfPurpleCardsInDeck; i++) {
-            int randomIndex = rand.nextInt(index.size());
-            deck[randomIndex] = new Card('P');
-            index.remove(randomIndex);
+            Card card= new Card('P');
+            player.deck.add(card);
         }
         for (int i = 0; i < nbOfLaserCardsInDeck; i++) {
-            int randomIndex = rand.nextInt(index.size());
-            deck[randomIndex] = new Card('L');
-            index.remove(randomIndex);
+            Card card= new Card('L');
+            player.deck.add(card);
         }
+        Collections.shuffle(this.deck);
     }
-    public void initHand(){
-            this.hand = new Card[nbOfCardsMaxInHand];
-            for (int i = 0; i < nbOfCardMaxInHand; i++){
-                Card drawedCard = this.deck[0];
-                char drawedCardType=drawedCard.getCardType();
-                hand[i]=new Card(drawedCardType);
-                this.deck
+    public void drawUntilHandIsFull(Player player){
+            for (int i = 0; i < nbOfCardsMaxInHand; i++){
+                player.hand.add(player.deck.get(0));
+                player.discard.add(player.deck.get(0));
+                player.deck.remove(0);
             }
-
+    }
+    public void initHand(Player player){
+        ArrayList<Card> hand = new ArrayList<>();
+        drawUntilHandIsFull(player);
     }
 }
