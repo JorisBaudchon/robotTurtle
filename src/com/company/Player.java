@@ -10,13 +10,13 @@ public class Player {
     private char orientation;
 
 
-    public Player(String pseudo, int playerTurn) {
+    public Player(String pseudo) {
         this.pseudo = pseudo;
-        this.playerTurn = playerTurn;
+        this.playerTurn = 4;
     }
 
     public int getPlayerTurn() {
-        return playerTurn;
+        return this.playerTurn;
     }
 
     public void setPlayerTurn(int playerTurn) {
@@ -31,7 +31,7 @@ public class Player {
     public void setOrientation(char orientation) {
         this.orientation = orientation;
     }
-=======
+
     
     public String getPseudo() {
 		return this.pseudo;
@@ -49,5 +49,5 @@ public class Player {
 		return this.main;
 	}
     
->>>>>>> 514750729597b235a6fe52a52ede6ae85ee6102d
+
 }

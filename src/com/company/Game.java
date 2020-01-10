@@ -10,7 +10,7 @@ import static com.company.Grid.*;
 
 public class Game {
     private int numberOfPlayers;
-    private ArrayList<Player> Players;
+    private ArrayList<Player> players = new ArrayList<>();
 
     public void initGame() {
         System.out.println("Bienvenue au jeu ROBOT TURTLES !");
@@ -18,14 +18,15 @@ public class Game {
         if (!newGame) {
             System.out.println("Merci d'être venu !");
         } else {
-            ArrayList<Player> Players = new ArrayList<>();
             numberOfPlayers = askNumberOfPlayers();
             for (int i = 0; i < numberOfPlayers; i++) {
                 String newPlayer = askNewPlayer(i + 1);
-                Player player = new Player(newPlayer, 1);
-                Players.add(player);
+                Player player = new Player(newPlayer);
+                this.players.add(player);
+                System.out.println(this.players.get(i));
             }
             InitTurnOrder();
+            showTurnOrder();
             InitGrid(numberOfPlayers);
             PlaceTurtle(numberOfPlayers);
             PlaceJewel(numberOfPlayers);
@@ -68,12 +69,19 @@ public class Game {
             index.add(i + 1);
         }
         for (int i = 0; i < numberOfPlayers; i++) {
+            System.out.println(index);
             int randomIndex = rand.nextInt(index.size());
-            System.out.println(Players);
-            Player player = Players.get(i);
-            System.out.println(player);
+            System.out.println(randomIndex);
+            Player player = this.players.get(i);
             player.setPlayerTurn(randomIndex);
             index.remove(randomIndex);
         }
     }
+
+    private void showTurnOrder() {
+        for (int i = 0; i < numberOfPlayers; i++) {
+            System.out.println((players.get(i)).getPlayerTurn());
+        }
+    }
+
 }
