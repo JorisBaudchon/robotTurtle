@@ -79,4 +79,9 @@ public class Move extends Grid {
                 }
         }
     }
+
+    public void MoveForward(Player player){
+        grid[player.getPositionX()][player.getPositionY()].setState('E');
+
+    }
 }
