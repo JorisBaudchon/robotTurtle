@@ -96,13 +96,13 @@ public class Player {
         }
     }
     public void initHand(){
-        this.hand = new Card[numberOfCardMaxInTheHand];
-        for (int i = 0; i < numberOfCardMaxInTheHand; i++){
-            Card drawedCard = this.deck[0];
-            char drawedCardType=drawedCard.getCardType();
-            hand[i]=new Card(drawedCardType);
-            this.deck
-        }
+            this.hand = new Card[numberOfCardMaxInTheHand];
+            for (int i = 0; i < numberOfCardMaxInTheHand; i++){
+                Card drawedCard = this.deck[0];
+                char drawedCardType=drawedCard.getCardType();
+                hand[i]=new Card(drawedCardType);
+                this.deck
+            }
 
     }
 }
