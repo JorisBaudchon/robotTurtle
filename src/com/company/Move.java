@@ -49,7 +49,7 @@ public class Move {
                     case "orange":
 
                         grid[1][0].setTurtle("orange");
-                        /break;
+                        break;
                     case "green":
                         grid[3][0].setTurtle("green");
                         break;
