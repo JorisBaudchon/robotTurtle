@@ -14,13 +14,13 @@ public class Player {
     private char orientation;
     private int positionX;
     private int positionY;
-    private int numberOfCardMaxInTheHand=5;
-    private int numberOfCardsInTheHand;
-    private int numberOfCardsInTheDeck=37;
-    private int numberOfBlueCardsInTheDeck=18;
-    private int numberOfYellowCardsInTheDeck=8;
-    private int numberOfPurpleCardsInTheDeck=8;
-    private int numberOfLaserCardsInTheDeck=3;
+    private int nbOfCardMaxInTheHand=5;
+    private int nbOfCardsInTheHand;
+    private int nbOfCardsInTheDeck=37;
+    private int nbOfBlueCardsInTheDeck=18;
+    private int nbOfYellowCardsInTheDeck=8;
+    private int nbOfPurpleCardsInTheDeck=8;
+    private int nbOfLaserCardsInTheDeck=3;
 
     public Player(String pseudo) {
         this.pseudo = pseudo;
@@ -71,34 +71,34 @@ public class Player {
         this.deck = new ArrayDeque<>();
         Random rand = new Random();
         ArrayList<Integer> index = new ArrayList<>();
-        for (int i = 0; i < numberOfCardsInTheDeck; i++) {
+        for (int i = 0; i < nbOfCardsInTheDeck; i++) {
             index.add(i);
             this.deck.add(Card('N'));
         }
-        for (int i = 0; i < numberOfBlueCardsInTheDeck; i++) {
+        for (int i = 0; i < nbOfBlueCardsInTheDeck; i++) {
             int randomIndex = rand.nextInt(index.size());
             deck[randomIndex] = new Card('B');
             index.remove(randomIndex);
         }
-        for (int i = 0; i < numberOfYellowCardsInTheDeck; i++) {
+        for (int i = 0; i < nbOfYellowCardsInTheDeck; i++) {
             int randomIndex = rand.nextInt(index.size());
             deck[randomIndex] = new Card('Y');
             index.remove(randomIndex);
         }
-        for (int i = 0; i < numberOfPurpleCardsInTheDeck; i++) {
+        for (int i = 0; i < nbOfPurpleCardsInTheDeck; i++) {
             int randomIndex = rand.nextInt(index.size());
             deck[randomIndex] = new Card('P');
             index.remove(randomIndex);
         }
-        for (int i = 0; i < numberOfLaserCardsInTheDeck; i++) {
+        for (int i = 0; i < nbOfLaserCardsInTheDeck; i++) {
             int randomIndex = rand.nextInt(index.size());
             deck[randomIndex] = new Card('L');
             index.remove(randomIndex);
         }
     }
     public void initHand(){
-            this.hand = new Card[numberOfCardMaxInTheHand];
-            for (int i = 0; i < numberOfCardMaxInTheHand; i++){
+            this.hand = new Card[nbOfCardMaxInTheHand];
+            for (int i = 0; i < nbOfCardMaxInTheHand; i++){
                 Card drawedCard = this.deck[0];
                 char drawedCardType=drawedCard.getCardType();
                 hand[i]=new Card(drawedCardType);
