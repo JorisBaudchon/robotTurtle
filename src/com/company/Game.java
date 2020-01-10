@@ -27,7 +27,10 @@ public class Game {
             grid.placeTurtle(numberOfPlayers);
             grid.placeJewel(numberOfPlayers);
             grid.displayGridConsole();
-            //initDeck(numberOfPlayers);
+            for (int i = 0; i < numberOfPlayers; i++) {
+                Player player = players.get(i);
+                player.initDeck();
+            }
 
         }
     }

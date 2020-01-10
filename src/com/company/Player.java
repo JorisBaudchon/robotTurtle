@@ -73,8 +73,8 @@ public class Player {
         this.positionY = positionY;
     }
 
-    public void initDeck(Player player) {
-        player.deck = new Card[numberOfCardsInTheDeck];
+    public void initDeck() {
+        this.deck = new Card[numberOfCardsInTheDeck];
         Random rand = new Random();
         ArrayList<Integer> index = new ArrayList<>();
         for (int i = 0; i < numberOfCardsInTheDeck; i++) {
@@ -82,28 +82,23 @@ public class Player {
         }
         for (int i = 0; i < numberOfBlueCardsInTheDeck; i++) {
             int randomIndex = rand.nextInt(index.size());
-            deck[i] = new Card('B');
-            deck[i].(index.get(randomIndex));
+            deck[randomIndex] = new Card('B');
             index.remove(randomIndex);
         }
         for (int i = 0; i < numberOfYellowCardsInTheDeck; i++) {
             int randomIndex = rand.nextInt(index.size());
-            deck.addYellowCard(index.get(randomIndex));
+            deck[randomIndex] = new Card('Y');
             index.remove(randomIndex);
         }
         for (int i = 0; i < numberOfPurpleCardsInTheDeck; i++) {
             int randomIndex = rand.nextInt(index.size());
-            deck.addPurpleCard(index.get(randomIndex));
+            deck[randomIndex] = new Card('P');
             index.remove(randomIndex);
         }
         for (int i = 0; i < numberOfLaserCardsInTheDeck; i++) {
             int randomIndex = rand.nextInt(index.size());
-            deck.addLaserCard(index.get(randomIndex));
+            deck[randomIndex] = new Card('L');
             index.remove(randomIndex);
         }
-    }
-
-    public void addBlueCard(Card[] deck){
-        this.deck
     }
 }
