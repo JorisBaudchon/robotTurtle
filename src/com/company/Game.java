@@ -13,7 +13,7 @@ public class Game {
     private ArrayList<Player> Players;
 
     public void initGame() {
-        System.out.println("Bienvenue au jeu ROBOT TURTLE !");
+        System.out.println("Bienvenue au jeu ROBOT TURTLES !");
         boolean newGame = askNewGame();
         if (!newGame) {
             System.out.println("Merci d'être venu !");
