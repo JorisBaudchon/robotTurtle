@@ -37,7 +37,7 @@ public class Game {
     private boolean askNewGame() {
         String entre;
         do {
-            System.out.println("Souhaitez vous faire une partie de ROBOT TURTLE ?");
+            System.out.println("Souhaitez vous faire une partie de ROBOT TURTLES ?");
             entre = scTxt.nextLine();
         } while (!entre.equals("oui") && !entre.equals("non") && !entre.equals("o") && !entre.equals("n"));
         return entre.equals("oui") || entre.equals("o");
