@@ -11,7 +11,9 @@ public class Player {
     private String pseudo;
     private String color;
     private char orientation;
-
+    private int positionX;
+    private int positionY;
+    
     public Player(String pseudo) {
         this.pseudo = pseudo;
         this.playerTurn = 0;

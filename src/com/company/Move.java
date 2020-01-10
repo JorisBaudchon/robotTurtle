@@ -40,26 +40,26 @@ public class Move {
         player.setOrientation(orientation);
     }
 
-/*
+/
     public static void BackToStart(Player player, int numberOfPlayers) {
         String color = player.getColor();
         switch (numberOfPlayers) {
             case 3:
-                //switch(color){
-                    //case "orange":
+                switch(color){
+                    case "orange":
 
-                        //grid[1][0].setTurtle("orange");
+                        grid[1][0].setTurtle("orange");
                         /break;
-                    //case "green":
-                        //grid[3][0].setTurtle("green");
-                        //break;
-                    //case "blue":
-                        //grid[6][0].setTurtle("blue");
-                        //break;
+                    case "green":
+                        grid[3][0].setTurtle("green");
+                        break;
+                    case "blue":
+                        grid[6][0].setTurtle("blue");
+                        break;
                 }
                 //break;
             //case 3:
 
-*/
+
 
 }
