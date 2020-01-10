@@ -18,11 +18,13 @@ public class Verifications {
             return "wall";
         } else if (cell.isATurtle() == true) {
             return "turtle";
+        } else if (cell.isAJewel() == true) {
+            return "jewel";
         } else {
             return "error";
         }
-        return "error";
     }
+<<<<<<< HEAD
 
     public static IsMovementPossible (){
         if (CellStatut(Cell cell)=="empty"){
@@ -33,3 +35,6 @@ public class Verifications {
 
 }
 
+=======
+}
+>>>>>>> 6c5e50073b58249e3ccebf6479256c00dbfe69dd
