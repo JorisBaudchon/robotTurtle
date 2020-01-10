@@ -10,7 +10,12 @@ public class Player {
     private ArrayDeque<Card> deck;
     private int playerTurn;
     private String pseudo;
+<<<<<<< HEAD
     private String color;
+=======
+    private char orientation;
+
+>>>>>>> af874700d0812bf932e9a9bc4831f1526f7bac2c
 
     public Player(String pseudo) {
         this.pseudo = pseudo;
@@ -24,6 +29,16 @@ public class Player {
     public void setPlayerTurn(int playerTurn) {
         this.playerTurn = playerTurn;
     }
+<<<<<<< HEAD
+
+    public char getOrientation() {
+        return orientation;
+    }
+
+    public void setOrientation(char orientation) {
+        this.orientation = orientation;
+    }
+
     
     public String getPseudo() {
 		return this.pseudo;
@@ -41,4 +56,5 @@ public class Player {
 		return this.hand;
 	}
     
+
 }

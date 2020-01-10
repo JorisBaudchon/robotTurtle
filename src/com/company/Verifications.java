@@ -22,5 +22,10 @@ public class Verifications {
             return "error";
         }
     }
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 6bfae9933c0b9145a24943f391eea74d8262036a
 }
 
