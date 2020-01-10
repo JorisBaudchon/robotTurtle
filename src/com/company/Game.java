@@ -33,6 +33,9 @@ public class Game {
                 player.initHand();
                 player.initWallHand();
             }
+            while (!endGameCondition()){
+
+            }
 
         }
     }
@@ -99,5 +102,15 @@ public class Game {
 
     public void completeProgram() {
 
+    }
+    public boolean endGameCondition(){
+        switch (numberOfPlayers){
+            case (2):
+                break;
+            case (3):
+                break;
+            case (4):
+                break;
+        }
     }
 }

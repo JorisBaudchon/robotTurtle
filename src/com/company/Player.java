@@ -18,17 +18,19 @@ public class Player {
     private int positionX;
     private int positionY;
     private int nbOfCardsMaxInHand = 5;
-    private int nbOfCardsInHand;
     private int nbOfBlueCardsInDeck = 18;
     private int nbOfYellowCardsInDeck = 8;
     private int nbOfPurpleCardsInDeck = 8;
     private int nbOfLaserCardsInDeck = 3;
     private int nbOfStoneWallCards = 3;
     private int nbOfIceWallCards = 2;
+    private boolean finished;
 
     public Player(String pseudo) {
         this.pseudo = pseudo;
+        this.orientation = 'S';
         this.playerTurn = 0;
+        this.finished = false;
     }
 
     public int getPlayerTurn() {
