@@ -30,6 +30,7 @@ public class Game {
             for (int i = 0; i < numberOfPlayers; i++) {
                 Player player = players.get(i);
                 player.initDeck();
+                player.initHand();
             }
 
         }

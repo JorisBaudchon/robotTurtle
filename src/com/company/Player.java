@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class Player {
 
-    public ArrayList<Card> hand = new ArrayList<Card>();
+    private Card[] hand;
     private Card[] deck;
     private int playerTurn;
     private String pseudo;
@@ -14,11 +14,11 @@ public class Player {
     private char orientation;
     private int positionX;
     private int positionY;
-    private int numberOfCardsInTheDeck;
-    private int numberOfBlueCardsInTheDeck;
-    private int numberOfYellowCardsInTheDeck;
-    private int numberOfPurpleCardsInTheDeck;
-    private int numberOfLaserCardsInTheDeck;
+    private int numberOfCardsInTheDeck=37;
+    private int numberOfBlueCardsInTheDeck=18;
+    private int numberOfYellowCardsInTheDeck=8;
+    private int numberOfPurpleCardsInTheDeck=8;
+    private int numberOfLaserCardsInTheDeck=3;
 
     public Player(String pseudo) {
         this.pseudo = pseudo;
@@ -47,14 +47,6 @@ public class Player {
 
     public String getColor() {
         return this.color;
-    }
-
-    public void setHand(ArrayList<Card> hand) {
-        this.hand = hand;
-    }
-
-    public ArrayList<Card> getHand() {
-        return this.hand;
     }
 
     public int getPositionX() {
@@ -100,5 +92,8 @@ public class Player {
             deck[randomIndex] = new Card('L');
             index.remove(randomIndex);
         }
+    }
+    public void initHand(){
+
     }
 }
