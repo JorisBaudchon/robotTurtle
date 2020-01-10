@@ -37,7 +37,7 @@ public class Player {
 		return this.pseudo;
 	}
     
-    public String colorPlayer() {
+    public String getColor() {
 		return this.color;
 	}
     

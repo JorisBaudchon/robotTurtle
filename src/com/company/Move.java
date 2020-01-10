@@ -42,6 +42,7 @@ public class Move {
 
 
     public static void BackToStart(Player player, int numberOfPlayers) {
+        String color = player.getColor();
         switch (numberOfPlayers) {
             case 3:
                 switch(color){
