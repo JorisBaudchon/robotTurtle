@@ -7,7 +7,7 @@ import java.util.Random;
 public class Player {
 
     private Card[] hand;
-    private Card[] deck;
+    private ArrayDeque<Card> deck;
     private int playerTurn;
     private String pseudo;
     private String color;
@@ -68,11 +68,12 @@ public class Player {
     }
 
     public void initDeck() {
-        this.deck = new Card[numberOfCardsInTheDeck];
+        this.deck = new ArrayDeque<>();
         Random rand = new Random();
         ArrayList<Integer> index = new ArrayList<>();
         for (int i = 0; i < numberOfCardsInTheDeck; i++) {
             index.add(i);
+            this.deck.add(Card('N'));
         }
         for (int i = 0; i < numberOfBlueCardsInTheDeck; i++) {
             int randomIndex = rand.nextInt(index.size());
