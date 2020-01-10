@@ -73,7 +73,8 @@ public class Player {
         ArrayList<Integer> index = new ArrayList<>();
         for (int i = 0; i < numberOfCardsInTheDeck; i++) {
             index.add(i);
-            this.deck.add(Card('N'));
+
+            this.deck.add(Card('N'));n
         }
         for (int i = 0; i < numberOfBlueCardsInTheDeck; i++) {
             int randomIndex = rand.nextInt(index.size());
