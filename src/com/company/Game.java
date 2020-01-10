@@ -80,5 +80,17 @@ public class Game {
             System.out.println((players.get(i)).getPlayerTurn());
         }
     }
+    
+    public void execute(){
+        
+    }
+    
+    public void buildWall(){
+        
+    }
+    
+    public void completeProgramme(){
+        
+    }
 
 }
