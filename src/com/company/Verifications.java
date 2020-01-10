@@ -24,4 +24,17 @@ public class Verifications {
             return "error";
         }
     }
+<<<<<<< HEAD
+
+    public static IsMovementPossible (){
+        if (CellStatut(Cell cell)=="empty"){
+
+        }
+
+    }
+
 }
+
+=======
+}
+>>>>>>> 6c5e50073b58249e3ccebf6479256c00dbfe69dd
