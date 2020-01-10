@@ -14,6 +14,8 @@ public class Player {
     private char orientation;
     private int positionX;
     private int positionY;
+    private int numberOfCardMaxInTheHand=5;
+    private int numberOfCardsInTheHand;
     private int numberOfCardsInTheDeck=37;
     private int numberOfBlueCardsInTheDeck=18;
     private int numberOfYellowCardsInTheDeck=8;
@@ -94,6 +96,13 @@ public class Player {
         }
     }
     public void initHand(){
+        this.hand = new Card[numberOfCardMaxInTheHand];
+        for (int i = 0; i < numberOfCardMaxInTheHand; i++){
+            Card drawedCard = this.deck[0];
+            char drawedCardType=drawedCard.getCardType();
+            hand[i]=new Card(drawedCardType);
+            this.deck
+        }
 
     }
 }
