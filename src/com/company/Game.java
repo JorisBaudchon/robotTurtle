@@ -113,8 +113,10 @@ public class Game {
     public void turn(Player player) {
         int entre;
         System.out.println("C'est le tour de " + player.getPseudo());
-        System.out.println(player.getHand());
-        System.out.println(player.getWallCardHand());
+        //System.out.println(player.getHand());
+        //showHand(player);
+        //System.out.println(player.getWallCardHand());
+        showWallCardHand(player);
         System.out.println("Que souhaitez vous faire ?");
         System.out.println("Entrez 1 pour COMPLETER LE PROGRAMME");
         System.out.println("Entrez 2 pour CONSTRUIRE UN MUR");
@@ -129,19 +131,37 @@ public class Game {
                 int wallCardChoosed;
                 System.out.println("Quel mur voulez vous jouer ?");
                 for (int i = 0; i < (player.getWallCardHand()).size(); i++) {
-                    System.out.println((i + 1) + player.wallCardHand.get(i).getWallCardType());
+                    System.out.print((i + 1) + ". ");
+                    System.out.println(player.wallCardHand.get(i).getWallCardType());
                 }
                 wallCardChoosed = scNb.nextInt();
                 int xWall;
                 int yWall;
-                System.out.println("A quelles coordonnées souhaitez vous le placer ?");
-                System.out.println("X ?");
-                
-                System.out.println("Y ?");
-
+                boolean WallValide = false;
+                do {
+                    System.out.println("A quelles coordonnées souhaitez vous le placer ?");
+                    System.out.println("X ?");
+                    xWall = scNb.nextInt();
+                    System.out.println("Y ?");
+                    yWall = scNb.nextInt();
+                    if (grid.grid[xWall][yWall].getState() == 'E') {
+                        grid.grid[xWall][yWall].setState(player.wallCardHand.get(wallCardChoosed).getWallCardType());
+                    } else {
+                        System.out.println("Cet emplacement n'est pas valide, choisissez en un autre.");
+                        WallValide = true;
+                    }
+                } while (WallValide == false);
+                System.out.println("mouvement validé");
                 break;
             case 3:
                 break;
+        }
+    }
+
+    public void showWallCardHand(Player player) {
+        System.out.print("Voici vos murs disponibles :");
+        for (int i = 0; i < (player.getWallCardHand()).size(); i++) {
+            System.out.print(player.wallCardHand.get(i).getWallCardType()+"  ");
         }
     }
 }
