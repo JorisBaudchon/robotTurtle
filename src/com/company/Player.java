@@ -3,8 +3,8 @@ package com.company;
 public class Player {
     
     private String couleur;
-	public List<Carte> main = new ArrayList<Carte>();
-	private List<Carte> pioche;
+    public List<Carte> main = new ArrayList<Carte>();
+    private List<Carte> pioche;
     private int playerTurn;
     private String pseudo;
 
