@@ -121,13 +121,26 @@ public class Game {
         System.out.println("Entrez 3 pour EXECUTER LE PROGRAMME");
         do {
             entre = scNb.nextInt();
-        }while(!(entre==1)&&!(entre==2)&&!(entre==3));
+        } while (!(entre == 1) && !(entre == 2) && !(entre == 3));
         switch (entre) {
-            case 1 :
+            case 1:
                 break;
-            case 2 :
+            case 2:
+                int wallCardChoosed;
+                System.out.println("Quel mur voulez vous jouer ?");
+                for (int i = 0; i < (player.getWallCardHand()).size(); i++) {
+                    System.out.println((i + 1) + player.wallCardHand.get(i).getWallCardType());
+                }
+                wallCardChoosed = scNb.nextInt();
+                int xWall;
+                int yWall;
+                System.out.println("A quelles coordonnées souhaitez vous le placer ?");
+                System.out.println("X ?");
+                
+                System.out.println("Y ?");
+
                 break;
-            case 3 :
+            case 3:
                 break;
         }
     }

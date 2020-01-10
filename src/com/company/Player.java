@@ -8,7 +8,7 @@ public class Player {
     private ArrayList<Card> hand;
     private ArrayList<Card> deck;
     private ArrayList<Card> discard;
-    private ArrayList<WallCard> wallCardHand;
+    public ArrayList<WallCard> wallCardHand;
     private int playerTurn;
     private String pseudo;
     private String color;
