@@ -4,13 +4,10 @@ import java.util.*;
 
 import static com.company.Verifications.*;
 
-import com.company.Player.*;
-
-import static com.company.Grid.*;
-
 public class Game {
     private int numberOfPlayers;
     private ArrayList<Player> players = new ArrayList<>();
+    private Grid grid = new Grid();
 
     public void initGame() {
         System.out.println("Bienvenue au jeu ROBOT TURTLES !");
@@ -27,9 +24,10 @@ public class Game {
             }
             InitTurnOrder();
             showTurnOrder();
-            InitGrid(numberOfPlayers);
-            PlaceTurtle(numberOfPlayers);
-            PlaceJewel(numberOfPlayers);
+            grid.initGrid(numberOfPlayers);
+            grid.placeTurtle(numberOfPlayers);
+            grid.placeJewel(numberOfPlayers);
+            grid.displayGridConsole();
             //InitDeck(numberOfPlayers);
 
         }
