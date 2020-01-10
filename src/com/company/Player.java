@@ -13,7 +13,7 @@ public class Player {
     private char orientation;
     private int positionX;
     private int positionY;
-    
+
     public Player(String pseudo) {
         this.pseudo = pseudo;
         this.playerTurn = 0;
@@ -50,6 +50,20 @@ public class Player {
 	public ArrayList<Card> getHand(){
 		return this.hand;
 	}
-    
 
+    public int getPositionX() {
+        return positionX;
+    }
+
+    public void setPositionX(int positionX) {
+        this.positionX = positionX;
+    }
+
+    public int getPositionY() {
+        return positionY;
+    }
+
+    public void setPositionY(int positionX) {
+        this.positionY = positionY;
+    }
 }
