@@ -96,9 +96,12 @@ public class Player {
     public void drawUntilHandIsFull() {
         for (int i = 0; i < nbOfCardsMaxInHand; i++) {
             this.hand.add(this.deck.get(0));
-            this.discard.add(this.deck.get(0));
             this.deck.remove(0);
         }
+    }
+    public void discardCard(int deletedCard){
+        this.discard.add(this.deck.get(0));
+        this.hand.remove(deletedCard);
     }
 
     public void initHand() {

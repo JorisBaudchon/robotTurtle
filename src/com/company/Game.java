@@ -151,17 +151,11 @@ public class Game {
                     } else {
                         System.out.println("Cet emplacement n'est pas valide, choisissez en un autre.");
                     }
-                } while (wallValide == false);
+                } while (!wallValide);
                 System.out.println("mouvement validé");
                 grid.displayGridConsole();
                 showCardHand(player);
-                String wantDefausse;
-                do {
-                    wantDefausse = scTxt.nextLine();
-                } while (!wantDefausse.equals("oui") && !wantDefausse.equals("non") && !wantDefausse.equals("o") && !wantDefausse.equals("n"));
-                System.out.println("Souhaitez vous défausser des cartes ?");
-                if (wantDefausse.equals("oui") || wantDefausse.equals("o"))
-
+                discardEndTurn(player);
                     break;
             case 3:
                 break;
@@ -180,5 +174,32 @@ public class Game {
         for (int i = 0; i < (player.getCardHand()).size(); i++) {
             System.out.print(player.hand.get(i).getCardType() + "  ");
         }
+    }
+
+    public void discardEndTurn(Player player){
+        String wantDefausse;
+        do {
+            wantDefausse = scTxt.nextLine();
+        } while (!wantDefausse.equals("oui") && !wantDefausse.equals("non") && !wantDefausse.equals("o") && !wantDefausse.equals("n"));
+        System.out.println("Souhaitez vous défausser des cartes ?");
+        if (wantDefausse.equals("oui") || wantDefausse.equals("o")){
+            showCardHand(player);
+            int discardedCard;
+            String wantToDiscard;
+            do{
+                System.out.println("Quelle carte voulez vous défausser ?");
+                for (int i = 0; i < (player.getCardHand()).size(); i++) {
+                    System.out.print((i + 1) + ". ");
+                    System.out.println(player.hand.get(i).getCardType());
+                }
+                discardedCard = scNb.nextInt();
+                player.discardCard(discardedCard);
+                System.out.println("Voulez vous supprimer une nouvelle carte ?");
+                do{
+                    wantToDiscard=scTxt.nextLine();
+                }while(!wantToDiscard.equals("oui") && !wantToDiscard.equals("non") && !wantToDiscard.equals("o") && !wantToDiscard.equals("n"));
+            }while(wantToDiscard.equals("oui") || wantToDiscard.equals("o"));
+        }
+
     }
 }
