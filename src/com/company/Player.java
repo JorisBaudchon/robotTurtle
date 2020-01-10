@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -8,6 +9,7 @@ public class Player {
     public ArrayList<Card> hand;
     private ArrayList<Card> deck;
     private ArrayList<Card> discard;
+    public ArrayDeque<Card> program;
     public ArrayList<WallCard> wallCardHand;
     private int playerTurn;
     private String pseudo;

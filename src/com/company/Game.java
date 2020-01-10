@@ -124,6 +124,9 @@ public class Game {
         } while (!(entre == 1) && !(entre == 2) && !(entre == 3));
         switch (entre) {
             case 1:
+                System.out.println("Quelle carte voulez vous ajouter au programme ?");
+                player.program
+
                 break;
             case 2:
                 int wallCardChoosed;
