@@ -11,13 +11,13 @@ public class Cell {
     String jewel;
     String turtle;
 
-    public Cell(boolean isAJewel, boolean isAnIceWall, boolean isAWall, boolean isEmpty, boolean isATurtle, String jewel, String turtle) {
+    public Cell() {
         this.isAJewel = false;
         this.isAnIceWall = false;
         this.isATurtle = false;
         this.isAWall = false;
         this.jewel = "";
-        this.isEmpty = false;
+        this.isEmpty = true;
         this.turtle = "";
     }
 
@@ -68,7 +68,7 @@ public class Cell {
 
     public void setTurtle(String turtle) {
         this.turtle = turtle;
-        this.isATurtle=true;
+        this.isATurtle = true;
     }
 }
 
