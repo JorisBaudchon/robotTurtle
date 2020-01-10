@@ -12,7 +12,8 @@ public class Card {
         this.cardType = cardType;
     }
 
-    public Card() {
-        this.cardType = 'N';
+    public Card(char cardType) {
+        this.cardType = cardType;
     }
 }
+

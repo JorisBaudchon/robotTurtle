@@ -82,7 +82,8 @@ public class Player {
         }
         for (int i = 0; i < numberOfBlueCardsInTheDeck; i++) {
             int randomIndex = rand.nextInt(index.size());
-            deck.addBlueCard(index.get(randomIndex));
+            deck[i] = new Card('B');
+            deck[i].(index.get(randomIndex));
             index.remove(randomIndex);
         }
         for (int i = 0; i < numberOfYellowCardsInTheDeck; i++) {
@@ -100,5 +101,9 @@ public class Player {
             deck.addLaserCard(index.get(randomIndex));
             index.remove(randomIndex);
         }
+    }
+
+    public void addBlueCard(Card[] deck){
+        this.deck
     }
 }
