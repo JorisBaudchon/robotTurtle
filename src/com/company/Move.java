@@ -41,7 +41,24 @@ public class Move {
     }
 
 
-    public static void BackToTheHell(Player player, Game numberOfPlayers) {
+    public static void BackToStart(Player player, int numberOfPlayers) {
+        switch (numberOfPlayers) {
+            case 3:
+                switch(color){
+                    case "orange":
+
+                        grid[1][0].setTurtle("orange");
+                        break;
+                    case "green":
+                        grid[3][0].setTurtle("green");
+                        break;
+                    case "blue";
+                        grid[6][0].setTurtle("blue");
+                        break;
+                }
+                break;
+            case 3:
+
 
     }
 }

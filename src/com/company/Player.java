@@ -12,7 +12,7 @@ public class Player {
 
     public Player(String pseudo) {
         this.pseudo = pseudo;
-        this.playerTurn = 4;
+        this.playerTurn = 0;
     }
 
     public int getPlayerTurn() {
@@ -22,7 +22,6 @@ public class Player {
     public void setPlayerTurn(int playerTurn) {
         this.playerTurn = playerTurn;
     }
-<<<<<<< HEAD
 
     public char getOrientation() {
         return orientation;
@@ -32,7 +31,6 @@ public class Player {
         this.orientation = orientation;
     }
 
-    
     public String getPseudo() {
 		return this.pseudo;
 	}
