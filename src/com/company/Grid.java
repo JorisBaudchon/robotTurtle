@@ -2,7 +2,7 @@ package com.company;
 
 public class Grid {
 
-    private Cell[][] grid = new Cell[8][8];
+    public Cell[][] grid = new Cell[8][8];
 
     public void initGrid(int numberOfPlayers) {
         grid = new Cell[8][8];
