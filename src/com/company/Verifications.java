@@ -18,19 +18,11 @@ public class Verifications {
             return "wall";
         } else if (cell.isATurtle() == true) {
             return "turtle";
-        } else if (cell.isAJewel() == true) {
-            return "jewel";
         } else {
             return "error";
         }
     }
-
-    public static IsMovementPossible (){
-        if (CellStatut()=="empty"){
-
-        }
-
-    }
+    
 
 }
 
