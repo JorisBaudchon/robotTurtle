@@ -13,7 +13,7 @@ public class Grid {
         }
         if (numberOfPlayers == 2 || numberOfPlayers == 3) {
             for (int i = 0; i < 8; i++) {
-                grid[7][i].setState('W');
+                grid[i][7].setState('W');
             }
         }
     }
@@ -21,16 +21,16 @@ public class Grid {
     public void placeJewel(int numberOfPlayers) {
         switch (numberOfPlayers) {
             case 2:
-                grid[3][7].setJewel("green");
+                grid[7][3].setJewel("green");
                 break;
             case 3:
-                grid[0][7].setJewel("purple");
-                grid[3][7].setJewel("green");
-                grid[6][7].setJewel("blue");
+                grid[7][0].setJewel("purple");
+                grid[7][3].setJewel("green");
+                grid[7][6].setJewel("blue");
                 break;
             case 4:
-                grid[1][7].setJewel("purple");
-                grid[7][7].setJewel("blue");
+                grid[7][1].setJewel("purple");
+                grid[7][6].setJewel("blue");
                 break;
         }
     }
@@ -38,19 +38,19 @@ public class Grid {
     public void placeTurtle(int numberOfPlayers) {
         switch (numberOfPlayers) {
             case 2:
-                grid[1][0].setTurtle("orange");
-                grid[5][0].setTurtle("green");
+                grid[0][1].setTurtle("orange");
+                grid[0][5].setTurtle("green");
                 break;
             case 3:
-                grid[1][0].setTurtle("orange");
-                grid[3][0].setTurtle("green");
-                grid[6][0].setTurtle("blue");
+                grid[0][0].setTurtle("orange");
+                grid[0][3].setTurtle("green");
+                grid[0][6].setTurtle("blue");
                 break;
             case 4:
                 grid[0][0].setTurtle("orange");
-                grid[2][0].setTurtle("green");
-                grid[5][0].setTurtle("blue");
-                grid[7][0].setTurtle("yellow");
+                grid[0][2].setTurtle("green");
+                grid[0][5].setTurtle("blue");
+                grid[0][7].setTurtle("yellow");
                 break;
         }
     }
