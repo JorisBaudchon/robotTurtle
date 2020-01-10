@@ -6,13 +6,11 @@ public class Cell {
     char state;
     String jewel;
     String turtle;
-    private int[] position;
 
     public Cell() {
         this.state='E';
         this.jewel = "";
         this.turtle = "";
-        this.position="";
     }
 
     public String getTurtle() {
@@ -41,11 +39,6 @@ public class Cell {
     public void setState(char state) {
         this.state = state;
     }
-    
-    public int[] getPosition() {
-		return this.position;
-	}
-
 }
 
 

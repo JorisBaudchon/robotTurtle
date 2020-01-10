@@ -63,7 +63,7 @@ public class Player {
         return this.positionY;
     }
 
-    public void setPositionY(int positionX) {
+    public void setPositionY(int positionY) {
         this.positionY = positionY;
     }
 }
