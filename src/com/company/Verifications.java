@@ -18,18 +18,10 @@ public class Verifications {
             return "wall";
         } else if (cell.isATurtle() == true) {
             return "turtle";
-<<<<<<< HEAD
         } else if (cell.isAJewel() == true) {
             return "jewel";
-=======
         } else {
             return "error";
->>>>>>> e05b90ce79de20a434e8c646e9bf60134f43ef54
         }
-        return "error";
     }
-
-    public static
-
 }
-
