@@ -73,7 +73,8 @@ public class Game {
             int randomIndex = rand.nextInt(index.size());
             System.out.println(randomIndex);
             Player player = this.players.get(i);
-            player.setPlayerTurn(randomIndex);
+            player.setPlayerTurn(index.get(randomIndex));
+            System.out.println(player.getPlayerTurn());
             index.remove(randomIndex);
         }
     }

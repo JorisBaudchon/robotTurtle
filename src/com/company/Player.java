@@ -4,7 +4,7 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 
 public class Player {
-    
+
     public ArrayList<Card> hand = new ArrayList<Card>();
     private ArrayDeque<Card> deck;
     private int playerTurn;
