@@ -5,7 +5,7 @@ import java.util.Collections;
 
 public class Player {
 
-    private ArrayList<Card> hand;
+    public ArrayList<Card> hand;
     private ArrayList<Card> deck;
     private ArrayList<Card> discard;
     public ArrayList<WallCard> wallCardHand;
@@ -122,7 +122,7 @@ public class Player {
         return finished;
     }
 
-    public ArrayList<Card> getHand() {
+    public ArrayList<Card> getCardHand() {
         return this.hand;
     }
 

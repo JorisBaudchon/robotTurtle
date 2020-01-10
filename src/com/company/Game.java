@@ -113,9 +113,7 @@ public class Game {
     public void turn(Player player) {
         int entre;
         System.out.println("C'est le tour de " + player.getPseudo());
-        //System.out.println(player.getHand());
-        //showHand(player);
-        //System.out.println(player.getWallCardHand());
+        showCardHand(player);
         showWallCardHand(player);
         System.out.println("Que souhaitez vous faire ?");
         System.out.println("Entrez 1 pour COMPLETER LE PROGRAMME");
@@ -137,22 +135,34 @@ public class Game {
                 wallCardChoosed = scNb.nextInt();
                 int xWall;
                 int yWall;
-                boolean WallValide = false;
+                boolean wallValide = false;
                 do {
+                    grid.displayGridConsole();
                     System.out.println("A quelles coordonnées souhaitez vous le placer ?");
                     System.out.println("X ?");
                     xWall = scNb.nextInt();
                     System.out.println("Y ?");
                     yWall = scNb.nextInt();
                     if (grid.grid[xWall][yWall].getState() == 'E') {
+                        System.out.println(player.wallCardHand.get(wallCardChoosed).getWallCardType());
                         grid.grid[xWall][yWall].setState(player.wallCardHand.get(wallCardChoosed).getWallCardType());
+                        System.out.println(grid.grid[xWall][yWall].getState());
+                        wallValide = true;
                     } else {
                         System.out.println("Cet emplacement n'est pas valide, choisissez en un autre.");
-                        WallValide = true;
                     }
-                } while (WallValide == false);
+                } while (wallValide == false);
                 System.out.println("mouvement validé");
-                break;
+                grid.displayGridConsole();
+                showCardHand(player);
+                String wantDefausse;
+                do {
+                    wantDefausse = scTxt.nextLine();
+                } while (!wantDefausse.equals("oui") && !wantDefausse.equals("non") && !wantDefausse.equals("o") && !wantDefausse.equals("n"));
+                System.out.println("Souhaitez vous défausser des cartes ?");
+                if (wantDefausse.equals("oui") || wantDefausse.equals("o"))
+
+                    break;
             case 3:
                 break;
         }
@@ -161,7 +171,14 @@ public class Game {
     public void showWallCardHand(Player player) {
         System.out.print("Voici vos murs disponibles :");
         for (int i = 0; i < (player.getWallCardHand()).size(); i++) {
-            System.out.print(player.wallCardHand.get(i).getWallCardType()+"  ");
+            System.out.print(player.wallCardHand.get(i).getWallCardType() + "  ");
+        }
+    }
+
+    public void showCardHand(Player player) {
+        System.out.print("Voici votre main :");
+        for (int i = 0; i < (player.getCardHand()).size(); i++) {
+            System.out.print(player.hand.get(i).getCardType() + "  ");
         }
     }
 }
