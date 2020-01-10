@@ -3,6 +3,8 @@ package com.company;
 public class Grid {
 
     private static Cell[][] grid;
+    private List<Player> players;
+    
 
 
     static void InitGrid(int numberOfPlayers) {
@@ -55,6 +57,14 @@ public class Grid {
                 break;
         }
     }
+    
+    public List<Player> getPlayers(){
+		return players;
+	}
+	public void setPlayers(List<Player> players) {
+		this.players = players;
+	}
+    
 
 }
 
