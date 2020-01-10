@@ -2,7 +2,7 @@ package com.company;
 
 public class Card {
   
-  String type;
+  	String type;
   
 	public Card(String type) {
 	    this.type=type;
