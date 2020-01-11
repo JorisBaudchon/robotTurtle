@@ -188,7 +188,7 @@ public class Game {
                             move.rightRotation(player);
                             break;
                         case 'L':
-                            move.
+                            move.lazerShot(player,players,numberOfPlayers);
                             break;
                     }
                 }
