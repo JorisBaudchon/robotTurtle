@@ -115,6 +115,7 @@ public class Game {
         System.out.println("C'est le tour de " + player.getPseudo());
         showCardHand(player);
         showWallCardHand(player);
+        showProgram(player);
         System.out.println("Que souhaitez vous faire ?");
         System.out.println("Entrez 1 pour COMPLETER LE PROGRAMME");
         System.out.println("Entrez 2 pour CONSTRUIRE UN MUR");
@@ -124,8 +125,14 @@ public class Game {
         } while (!(entre == 1) && !(entre == 2) && !(entre == 3));
         switch (entre) {
             case 1:
+                int programCard;
                 System.out.println("Quelle carte voulez vous ajouter au programme ?");
-                player.program.
+                for (int i = 0; i < (player.getProgram()).size(); i++) {
+                    System.out.print((i + 1) + ". ");
+                    System.out.println(player.program.get(i).getCardType());
+                }
+                programCard = scNb.nextInt();
+
 
                 break;
             case 2:
@@ -209,5 +216,12 @@ public class Game {
             player.drawUntilHandIsFull(deletedCardCount);
         }
 
+    }
+
+    public void showProgram(Player player) {
+        System.out.print("Voici votre programme :");
+        for (int i = 0; i < (player.getProgram()).size(); i++) {
+            System.out.print(player.program.get(i).getCardType() + "  ");
+        }
     }
 }

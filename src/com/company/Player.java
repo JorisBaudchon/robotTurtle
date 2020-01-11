@@ -9,7 +9,7 @@ public class Player {
     public ArrayList<Card> hand;
     private ArrayList<Card> deck;
     private ArrayList<Card> discard;
-    private ArrayDeque<Card> program;
+    public ArrayList<Card> program;
     public ArrayList<WallCard> wallCardHand;
     private int playerTurn;
     private String pseudo;
@@ -137,6 +137,10 @@ public class Player {
 
     public ArrayList<Card> getDeck() {
         return this.deck;
+    }
+
+    public ArrayList<Card> getProgram(){
+        return this.program;
     }
 }
 
