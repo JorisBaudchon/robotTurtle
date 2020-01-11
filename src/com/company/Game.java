@@ -12,38 +12,40 @@ public class Game {
 
     private void initGame() {
         System.out.println("Bienvenue au jeu ROBOT TURTLES !");
-        boolean newGame = askNewGame();
-        if (!newGame) {
-            System.out.println("Merci d'être venu !");
-        } else {
-            numberOfPlayers = askNumberOfPlayers();
-            for (int i = 0; i < numberOfPlayers; i++) {
-                String newPlayer = askNewPlayer(i + 1);
-                Player player = new Player(newPlayer);
-                this.players.add(player);
-            }
-            initTurnOrder();
-            showTurnOrder();
-            grid.initGrid(numberOfPlayers);
-            grid.placeTurtle(numberOfPlayers);
-            grid.placeJewel(numberOfPlayers);
+        do {
+            boolean newGame = askNewGame();
+            if (!newGame) {
+                System.out.println("Merci d'être venu !");
+            } else {
+                numberOfPlayers = askNumberOfPlayers();
+                for (int i = 0; i < numberOfPlayers; i++) {
+                    String newPlayer = askNewPlayer(i + 1);
+                    Player player = new Player(newPlayer);
+                    this.players.add(player);
+                }
+                initTurnOrder();
+                showTurnOrder();
+                grid.initGrid(numberOfPlayers);
+                grid.placeTurtle(numberOfPlayers);
+                grid.placeJewel(numberOfPlayers);
 
-            grid.displayGridConsole();
-            for (int i = 0; i < numberOfPlayers; i++) {
-                Player player = players.get(i);
-                player.initDeck();
-                player.initHand();
-                player.initWallHand();
-                player.createProgram();
-            }
-            while (!endGameCondition()) {
-                for (Player player : orderedPlayers) {
-                    turn(player);
+                grid.displayGridConsole();
+                for (int i = 0; i < numberOfPlayers; i++) {
+                    Player player = players.get(i);
+                    player.initDeck();
+                    player.initHand();
+                    player.initWallHand();
+                    player.createProgram();
+                }
+                while (!endGameCondition()) {
+                    for (Player player : orderedPlayers) {
+                        turn(player);
+                    }
                 }
             }
-
-        }
+        }while (!end)
     }
+
 
     private boolean askNewGame() {
         String entre;
@@ -87,8 +89,8 @@ public class Game {
             Player player = this.players.get(i);
             player.setPlayerTurn(index.get(randomIndex));
             player.setOrientation('S');
-            switch (numberOfPlayers){
-                case 2 :
+            switch (numberOfPlayers) {
+                case 2:
                     orderedPlayers.get(0).setPositionX(0);
                     orderedPlayers.get(0).setPositionY(1);
                     orderedPlayers.get(0).setColor("orange");
@@ -96,7 +98,7 @@ public class Game {
                     orderedPlayers.get(1).setPositionY(5);
                     orderedPlayers.get(1).setColor("green");
                     break;
-                case 3 :
+                case 3:
                     orderedPlayers.get(0).setPositionX(0);
                     orderedPlayers.get(0).setPositionY(1);
                     orderedPlayers.get(0).setColor("orange");
@@ -107,7 +109,7 @@ public class Game {
                     orderedPlayers.get(2).setPositionY(6);
                     orderedPlayers.get(2).setColor("blue");
                     break;
-                case 4 :
+                case 4:
                     orderedPlayers.get(0).setPositionX(0);
                     orderedPlayers.get(0).setPositionY(6);
                     orderedPlayers.get(0).setColor("orange");
@@ -158,7 +160,7 @@ public class Game {
                 return false;
             }
         }
-    return false;
+        return false;
     }
 
     private void turn(Player player) {
@@ -197,7 +199,7 @@ public class Game {
                     player.program.add(player.hand.get(programCard));
                     player.discardCard(programCard);
                     do {
-                        wantChangeProgram="o";
+                        wantChangeProgram = "o";
                         if (!player.hand.isEmpty()) {
                             System.out.println("Voulez vous ajouter une autre carte ?");
                             wantChangeProgram = scTxt.nextLine();
@@ -207,7 +209,7 @@ public class Game {
                 discardEndTurn(player);
                 break;
             case 2:
-                if(!player.wallCardHand.isEmpty()) {
+                if (!player.wallCardHand.isEmpty()) {
                     int wallCardChoosed = 0;
                     try {
                         System.out.println("Quel mur voulez vous jouer ?");
