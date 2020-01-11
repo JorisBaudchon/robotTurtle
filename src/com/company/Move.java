@@ -115,7 +115,7 @@ public class Move extends Grid {
     }
 
 
-    public void moveForward(Player player){
+    public void moveForward(Player player) {
         grid[player.getPositionX()][player.getPositionY()].setState('E');
         char orientation = player.getOrientation();
         int positionY = player.getPositionY();
@@ -160,15 +160,66 @@ public class Move extends Grid {
                         }
                     }
                 } else if (this.grid[positionX][positionY - i].getState() == 'W') {
-                } else if (this.grid[positionX][positionY - i].getState()=='I'){
+                } else if (this.grid[positionX][positionY - i].getState() == 'I') {
                     this.grid[positionX][positionY - i].setState('E');
-                } else if (this.grid[positionX][positionY - i].getState()=='J') {
+                } else if (this.grid[positionX][positionY - i].getState() == 'J') {
                     backToStart(player, numberOfPlayers);
-                } else if (positionY-i == 0) {}
-                
-                    case 'W':
-
-
+                } else if (positionY - i == 0) {
+                }
+            case 'W':
+                while (this.grid[positionX-i][positionY].getState() == 'E') {
+                    i = i++;
+                }
+                if (this.grid[positionX-i][positionY ].getState() == 'T') {
+                    String color = this.grid[positionX-i][positionY].getTurtle();
+                    for (Player playerAttacked : players) {
+                        if (playerAttacked.getColor() == color) {
+                            backToStart(playerAttacked, numberOfPlayers);
+                        }
+                    }
+                } else if (this.grid[positionX-i][positionY].getState() == 'W') {
+                } else if (this.grid[positionX-i][positionY].getState() == 'I') {
+                    this.grid[positionX-i][positionY].setState('E');
+                } else if (this.grid[positionX-i][positionY].getState() == 'J') {
+                    backToStart(player, numberOfPlayers);
+                } else if (positionX-i == 0) {
+                }
+            case 'S':
+                while (this.grid[positionX][positionY+i].getState() == 'E') {
+                    i = i++;
+                }
+                if (this.grid[positionX][positionY+i].getState() == 'T') {
+                    String color = this.grid[positionX-i][positionY].getTurtle();
+                    for (Player playerAttacked : players) {
+                        if (playerAttacked.getColor() == color) {
+                            backToStart(playerAttacked, numberOfPlayers);
+                        }
+                    }
+                } else if (this.grid[positionX][positionY+i].getState() == 'W') {
+                } else if (this.grid[positionX][positionY+i].getState() == 'I') {
+                    this.grid[positionX][positionY+i].setState('E');
+                } else if (this.grid[positionX][positionY+i].getState() == 'J') {
+                    backToStart(player, numberOfPlayers);
+                } else if (positionY+i == 0) {
+                }
+            case 'E':
+                while (this.grid[positionX+i][positionY].getState() == 'E') {
+                    i = i++;
+                }
+                if (this.grid[positionX+i][positionY].getState() == 'T') {
+                    String color = this.grid[positionX+i][positionY].getTurtle();
+                    for (Player playerAttacked : players) {
+                        if (playerAttacked.getColor() == color) {
+                            backToStart(playerAttacked, numberOfPlayers);
+                        }
+                    }
+                } else if (this.grid[positionX+i][positionY].getState() == 'W') {
+                } else if (this.grid[positionX+i][positionY].getState() == 'I') {
+                    this.grid[positionX+i][positionY].setState('E');
+                } else if (this.grid[positionX+i][positionY].getState() == 'J') {
+                    backToStart(player, numberOfPlayers);
+                } else if (positionX+i == 0) {
+                }
         }
     }
 }
