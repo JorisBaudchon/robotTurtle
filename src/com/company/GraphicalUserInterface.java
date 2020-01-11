@@ -5,7 +5,7 @@ import javax.swing.JLabel;
 import java.awt.*;
 
 
-public class GraphicalUserInterface {
+public class GraphicalUserInterface extends JFrame{
     public static void main(String[] args) {
         JFrame window = new JFrame();
         window.setTitle("Robot Turtle");
