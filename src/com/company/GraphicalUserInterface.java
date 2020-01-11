@@ -14,7 +14,7 @@ public class GraphicalUserInterface extends JFrame{
     public GraphicalUserInterface(){
         
         JFrame window = new JFrame();
-        window.setTitle("Robot Turtle");
+        window.setTitle("Robot Turtles");
         window.setResizable(false);
         window.setVisible(true);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
