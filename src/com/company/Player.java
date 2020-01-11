@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -8,6 +9,7 @@ public class Player {
     public ArrayList<Card> hand;
     private ArrayList<Card> deck;
     private ArrayList<Card> discard;
+    public ArrayList<Card> program;
     public ArrayList<WallCard> wallCardHand;
     private int playerTurn;
     private String pseudo;
@@ -94,12 +96,13 @@ public class Player {
     }
 
     public void drawUntilHandIsFull(int nbOfCardsInHand) {
-        for (int i = 0; i < (nbOfCardsMaxInHand-nbOfCardsInHand); i++) {
+        for (int i = 0; i < (nbOfCardsMaxInHand - nbOfCardsInHand); i++) {
             this.hand.add(this.deck.get(0));
             this.deck.remove(0);
         }
     }
-    public void discardCard(int deletedCard){
+
+    public void discardCard(int deletedCard) {
         this.discard.add(this.deck.get(0));
         this.hand.remove(deletedCard);
     }
@@ -135,6 +138,14 @@ public class Player {
 
     public ArrayList<Card> getDeck() {
         return this.deck;
+    }
+
+    public ArrayList<Card> getProgram() {
+        return this.program;
+    }
+
+    public void createProgram() {
+        this.program = new ArrayList<>();
     }
 }
 

@@ -33,6 +33,7 @@ public class Game {
                 player.initDeck();
                 player.initHand();
                 player.initWallHand();
+                player.createProgram();
             }
             while (!endGameCondition()) {
                 for (Player player : orderedPlayers) {
@@ -103,11 +104,7 @@ public class Game {
                 nbFinishedPlayers = nbFinishedPlayers + 1;
             }
         }
-        if (nbFinishedPlayers < (numberOfPlayers - 1)) {
-            return false;
-        } else {
-            return true;
-        }
+        return nbFinishedPlayers >= (numberOfPlayers - 1);
     }
 
     public void turn(Player player) {
@@ -115,6 +112,7 @@ public class Game {
         System.out.println("C'est le tour de " + player.getPseudo());
         showCardHand(player);
         showWallCardHand(player);
+        showProgram(player);
         System.out.println("Que souhaitez vous faire ?");
         System.out.println("Entrez 1 pour COMPLETER LE PROGRAMME");
         System.out.println("Entrez 2 pour CONSTRUIRE UN MUR");
@@ -124,6 +122,24 @@ public class Game {
         } while (!(entre == 1) && !(entre == 2) && !(entre == 3));
         switch (entre) {
             case 1:
+                int programCard;
+                String wantChangeProgram;
+                do {
+                    System.out.println("Quelle carte voulez vous ajouter au programme ?");
+                    for (int i = 0; i < (player.getCardHand()).size(); i++) {
+                        System.out.print((i + 1) + ". ");
+                        System.out.println(player.hand.get(i).getCardType());
+                    }
+                    programCard = scNb.nextInt();
+                    programCard = programCard - 1;
+                    player.program.add(player.hand.get(programCard));
+                    player.discardCard(programCard);
+                    do {
+                        System.out.println("Voulez vous ajouter une autre carte ?");
+                        wantChangeProgram = scTxt.nextLine();
+                    } while (!wantChangeProgram.equals("oui") && !wantChangeProgram.equals("non") && !wantChangeProgram.equals("o") && !wantChangeProgram.equals("n"));
+                } while (wantChangeProgram.equals("oui") || wantChangeProgram.equals("o"));
+                discardEndTurn(player);
                 break;
             case 2:
                 int wallCardChoosed;
@@ -159,6 +175,23 @@ public class Game {
                 showCardHand(player);
                 break;
             case 3:
+                for(Card card : player.program){
+                    Move move = new Move();
+                    switch(card.getCardType()){
+                        case 'B':
+                            move.moveForward(player);
+                            break;
+                        case 'Y':
+                            move.leftRotation(player);
+                            break;
+                        case 'P':
+                            move.rightRotation(player);
+                            break;
+                        case 'L':
+                            move.
+                            break;
+                    }
+                }
                 break;
         }
     }
@@ -206,5 +239,12 @@ public class Game {
             player.drawUntilHandIsFull(deletedCardCount);
         }
 
+    }
+
+    public void showProgram(Player player) {
+        System.out.print("Voici votre programme :");
+        for (int i = 0; i < (player.getProgram()).size(); i++) {
+            System.out.print(player.program.get(i).getCardType() + "  ");
+        }
     }
 }
