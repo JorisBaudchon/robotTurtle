@@ -150,4 +150,8 @@ public class Player {
     public void createProgram() {
         this.program = new ArrayList<>();
     }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
 }
