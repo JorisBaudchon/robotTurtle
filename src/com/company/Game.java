@@ -176,16 +176,19 @@ public class Game {
                 break;
             case 3:
                 for(Card card : player.program){
+                    Move move = new Move();
                     switch(card.getCardType()){
                         case 'B':
-                            Move.moveForward(player);
+                            move.moveForward(player);
                             break;
                         case 'Y':
-
+                            move.leftRotation(player);
                             break;
                         case 'P':
+                            move.rightRotation(player);
                             break;
                         case 'L':
+                            move.
                             break;
                     }
                 }
