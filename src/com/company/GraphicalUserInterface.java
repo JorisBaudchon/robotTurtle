@@ -38,13 +38,13 @@ public class GraphicalUserInterface extends JFrame{
        BlueCard.setBounds(51, 500, 100, 155);
        window.getContentPane().add(BlueCard);
 
-       JButton PurpleCard = new JButton("Gauche");
-       PurpleCard.setBounds(133, 500, 100, 155);
-       window.getContentPane().add(PurpleCard);
+       JButton YellowCard = new JButton("Gauche");
+       YellowCard.setBounds(133, 500, 100, 155);
+       window.getContentPane().add(YellowCard);
 
-       JButton YellowCard = new JButton("Droite");
-       YellowCard.setBounds(215, 500, 100, 155);
-       fenetre.getContentPane().add(YellowCard);
+       JButton PurpleCard = new JButton("Droite");
+       PurpleCard.setBounds(215, 500, 100, 155);
+       fenetre.getContentPane().add(PurpleCard);
 
        JButton LaserCard = new JButton("Laser");
        LaserCard.setBounds(296, 500, 100, 155);
