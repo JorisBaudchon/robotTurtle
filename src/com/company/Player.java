@@ -96,12 +96,13 @@ public class Player {
     }
 
     public void drawUntilHandIsFull(int nbOfCardsInHand) {
-        for (int i = 0; i < (nbOfCardsMaxInHand-nbOfCardsInHand); i++) {
+        for (int i = 0; i < (nbOfCardsMaxInHand - nbOfCardsInHand); i++) {
             this.hand.add(this.deck.get(0));
             this.deck.remove(0);
         }
     }
-    public void discardCard(int deletedCard){
+
+    public void discardCard(int deletedCard) {
         this.discard.add(this.deck.get(0));
         this.hand.remove(deletedCard);
     }
@@ -139,8 +140,12 @@ public class Player {
         return this.deck;
     }
 
-    public ArrayList<Card> getProgram(){
+    public ArrayList<Card> getProgram() {
         return this.program;
+    }
+
+    public void createProgram() {
+        this.program = new ArrayList<>();
     }
 }
 

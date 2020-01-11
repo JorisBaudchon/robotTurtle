@@ -33,6 +33,7 @@ public class Game {
                 player.initDeck();
                 player.initHand();
                 player.initWallHand();
+                player.createProgram();
             }
             while (!endGameCondition()) {
                 for (Player player : orderedPlayers) {
@@ -103,11 +104,7 @@ public class Game {
                 nbFinishedPlayers = nbFinishedPlayers + 1;
             }
         }
-        if (nbFinishedPlayers < (numberOfPlayers - 1)) {
-            return false;
-        } else {
-            return true;
-        }
+        return nbFinishedPlayers >= (numberOfPlayers - 1);
     }
 
     public void turn(Player player) {
@@ -126,14 +123,23 @@ public class Game {
         switch (entre) {
             case 1:
                 int programCard;
-                System.out.println("Quelle carte voulez vous ajouter au programme ?");
-                for (int i = 0; i < (player.getProgram()).size(); i++) {
-                    System.out.print((i + 1) + ". ");
-                    System.out.println(player.program.get(i).getCardType());
-                }
-                programCard = scNb.nextInt();
-
-
+                String wantChangeProgram;
+                do {
+                    System.out.println("Quelle carte voulez vous ajouter au programme ?");
+                    for (int i = 0; i < (player.getCardHand()).size(); i++) {
+                        System.out.print((i + 1) + ". ");
+                        System.out.println(player.hand.get(i).getCardType());
+                    }
+                    programCard = scNb.nextInt();
+                    programCard = programCard - 1;
+                    player.program.add(player.hand.get(programCard));
+                    player.discardCard(programCard);
+                    do {
+                        System.out.println("Voulez vous ajouter une autre carte ?");
+                        wantChangeProgram = scTxt.nextLine();
+                    } while (!wantChangeProgram.equals("oui") && !wantChangeProgram.equals("non") && !wantChangeProgram.equals("o") && !wantChangeProgram.equals("n"));
+                } while (wantChangeProgram.equals("oui") || wantChangeProgram.equals("o"));
+                discardEndTurn(player);
                 break;
             case 2:
                 int wallCardChoosed;
