@@ -1,12 +1,12 @@
 package com.company;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.*;
 
 
-
 public class GraphicalUserInterface {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         JFrame window = new JFrame();
         window.setTitle("Robot Turtle");
         window.setResizable(false);

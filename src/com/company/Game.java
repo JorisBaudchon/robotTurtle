@@ -148,7 +148,7 @@ public class Game {
                     player.program.add(player.hand.get(programCard));
                     player.discardCard(programCard);
                     do {
-                        wantChangeProgram="o";
+                        wantChangeProgram = "o";
                         if (!player.hand.isEmpty()) {
                             System.out.println("Voulez vous ajouter une autre carte ?");
                             wantChangeProgram = scTxt.nextLine();
@@ -158,7 +158,7 @@ public class Game {
                 discardEndTurn(player);
                 break;
             case 2:
-                if(!player.wallCardHand.isEmpty()) {
+                if (!player.wallCardHand.isEmpty()) {
                     int wallCardChoosed = 0;
                     try {
                         System.out.println("Quel mur voulez vous jouer ?");
@@ -216,7 +216,7 @@ public class Game {
                             move.rightRotation(player);
                             break;
                         case 'L':
-                            move.lazerShot(player, players, numberOfPlayers);
+                            move.laserShot(player, players, numberOfPlayers);
                             break;
                     }
                 }
