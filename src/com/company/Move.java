@@ -2,7 +2,7 @@ package com.company;
 
 public class Move extends Grid {
 
-    public static void LeftRotation(Player player) {
+    public static void leftRotation(Player player) {
         char orientation = player.getOrientation();
         switch (orientation) {
             case 'N':
@@ -21,7 +21,7 @@ public class Move extends Grid {
         player.setOrientation(orientation);
     }
 
-    public static void RightRotation(Player player) {
+    public static void rightRotation(Player player) {
         char orientation = player.getOrientation();
         switch (orientation) {
             case 'N':
@@ -40,7 +40,7 @@ public class Move extends Grid {
         player.setOrientation(orientation);
     }
 
-    public void BackToStart(Player player, int numberOfPlayers) {
+    public void backToStart(Player player, int numberOfPlayers) {
         String color = player.getColor();
         switch (numberOfPlayers) {
 
@@ -80,7 +80,7 @@ public class Move extends Grid {
         }
     }
 
-    public void MoveForward(Player player){
+    public void moveForward(Player player){
         grid[player.getPositionX()][player.getPositionY()].setState('E');
         char orientation = player.getOrientation();
         int positionY=player.getPositionY();

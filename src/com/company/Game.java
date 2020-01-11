@@ -175,6 +175,20 @@ public class Game {
                 showCardHand(player);
                 break;
             case 3:
+                for(Card card : player.program){
+                    switch(card.getCardType()){
+                        case 'B':
+                            Move.moveForward(player);
+                            break;
+                        case 'Y':
+
+                            break;
+                        case 'P':
+                            break;
+                        case 'L':
+                            break;
+                    }
+                }
                 break;
         }
     }
