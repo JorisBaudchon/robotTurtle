@@ -158,7 +158,7 @@ public class Move extends Grid {
                             backToStart(playerAttacked, numberOfPlayers);
                         }
                     }
-                } else if (this.grid[positionX][positionY - i].getState() == 'W') {
+                } else if (this.grid[positionX][positionY - i].getState() == 'S') {
                 } else if (this.grid[positionX][positionY - i].getState() == 'I') {
                     this.grid[positionX][positionY - i].setState('E');
                 } else if (this.grid[positionX][positionY - i].getState() == 'J') {
@@ -176,7 +176,7 @@ public class Move extends Grid {
                             backToStart(playerAttacked, numberOfPlayers);
                         }
                     }
-                } else if (this.grid[positionX-i][positionY].getState() == 'W') {
+                } else if (this.grid[positionX-i][positionY].getState() == 'S') {
                 } else if (this.grid[positionX-i][positionY].getState() == 'I') {
                     this.grid[positionX-i][positionY].setState('E');
                 } else if (this.grid[positionX-i][positionY].getState() == 'J') {
@@ -194,7 +194,7 @@ public class Move extends Grid {
                             backToStart(playerAttacked, numberOfPlayers);
                         }
                     }
-                } else if (this.grid[positionX][positionY+i].getState() == 'W') {
+                } else if (this.grid[positionX][positionY+i].getState() == 'S') {
                 } else if (this.grid[positionX][positionY+i].getState() == 'I') {
                     this.grid[positionX][positionY+i].setState('E');
                 } else if (this.grid[positionX][positionY+i].getState() == 'J') {
@@ -212,7 +212,7 @@ public class Move extends Grid {
                             backToStart(playerAttacked, numberOfPlayers);
                         }
                     }
-                } else if (this.grid[positionX+i][positionY].getState() == 'W') {
+                } else if (this.grid[positionX+i][positionY].getState() == 'S') {
                 } else if (this.grid[positionX+i][positionY].getState() == 'I') {
                     this.grid[positionX+i][positionY].setState('E');
                 } else if (this.grid[positionX+i][positionY].getState() == 'J') {

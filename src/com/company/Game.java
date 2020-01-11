@@ -10,7 +10,7 @@ public class Game {
     private ArrayList<Player> orderedPlayers = new ArrayList<>();
     private Grid grid = new Grid();
 
-    public void initGame() {
+    private void initGame() {
         System.out.println("Bienvenue au jeu ROBOT TURTLES !");
         boolean newGame = askNewGame();
         if (!newGame) {
@@ -148,7 +148,7 @@ public class Game {
         return nbFinishedPlayers >= (numberOfPlayers - 1);
     }
 
-    public void turn(Player player) {
+    private void turn(Player player) {
         int entre;
         System.out.println("C'est le tour de " + player.getPseudo());
         showCardHand(player);
@@ -262,21 +262,21 @@ public class Game {
         }
     }
 
-    public void showWallCardHand(Player player) {
+    private void showWallCardHand(Player player) {
         System.out.print("Voici vos murs disponibles :");
         for (int i = 0; i < (player.getWallCardHand()).size(); i++) {
             System.out.print(player.wallCardHand.get(i).getWallCardType() + "  ");
         }
     }
 
-    public void showCardHand(Player player) {
+    private void showCardHand(Player player) {
         System.out.print("Voici votre main :");
         for (int i = 0; i < (player.getCardHand()).size(); i++) {
             System.out.print(player.hand.get(i).getCardType() + "  ");
         }
     }
 
-    public void discardEndTurn(Player player) {
+    private void discardEndTurn(Player player) {
         String wantDefausse;
         System.out.println("Souhaitez vous défausser des cartes ?");
         do {
@@ -307,7 +307,7 @@ public class Game {
 
     }
 
-    public void showProgram(Player player) {
+    private void showProgram(Player player) {
         System.out.print("Voici votre programme :");
         for (int i = 0; i < (player.getProgram()).size(); i++) {
             System.out.print(player.program.get(i).getCardType() + "  ");
