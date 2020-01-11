@@ -145,7 +145,20 @@ public class Game {
                 nbFinishedPlayers = nbFinishedPlayers + 1;
             }
         }
-        return nbFinishedPlayers >= (numberOfPlayers - 1);
+        if (numberOfPlayers == 2) {
+            if (nbFinishedPlayers == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        } else if (numberOfPlayers == 3 || numberOfPlayers == 4) {
+            if (nbFinishedPlayers == 2) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    return false;
     }
 
     private void turn(Player player) {
