@@ -99,6 +99,13 @@ public class Player {
         for (int i = 0; i < (nbOfCardsMaxInHand - nbOfCardsInHand); i++) {
             this.hand.add(this.deck.get(0));
             this.deck.remove(0);
+            if (this.deck.size() == 1) {
+                for (int j = 0; j < this.discard.size(); j++) {
+                    this.deck.add(this.discard.get(0));
+                    this.deck.remove(0);
+                }
+                Collections.shuffle(this.deck);
+            }
         }
     }
 
@@ -136,11 +143,7 @@ public class Player {
         return this.wallCardHand;
     }
 
-    public ArrayList<Card> getDeck() {
-        return this.deck;
-    }
-
-    private ArrayList<Card> getProgram() {
+    public ArrayList<Card> getProgram() {
         return this.program;
     }
 
@@ -148,4 +151,3 @@ public class Player {
         this.program = new ArrayList<>();
     }
 }
-

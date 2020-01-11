@@ -27,6 +27,7 @@ public class Game {
             grid.initGrid(numberOfPlayers);
             grid.placeTurtle(numberOfPlayers);
             grid.placeJewel(numberOfPlayers);
+
             grid.displayGridConsole();
             for (int i = 0; i < numberOfPlayers; i++) {
                 Player player = players.get(i);
@@ -54,10 +55,14 @@ public class Game {
     }
 
     private int askNumberOfPlayers() {
-        int entre;
+        int entre = 1;
         do {
-            System.out.println("Combien y aura t-il de joueurs ?");
-            entre = scNb.nextInt();
+            try {
+                System.out.println("Combien y aura t-il de joueurs ?");
+                entre = Integer.parseInt(scNb.nextLine());
+            } catch (Exception e) {
+                entre = 1;
+            }
         } while ((entre != 2) && (entre != 3) && (entre != 4));
         return entre;
     }
@@ -113,71 +118,94 @@ public class Game {
         showCardHand(player);
         showWallCardHand(player);
         showProgram(player);
-        System.out.println("Que souhaitez vous faire ?");
-        System.out.println("Entrez 1 pour COMPLETER LE PROGRAMME");
-        System.out.println("Entrez 2 pour CONSTRUIRE UN MUR");
-        System.out.println("Entrez 3 pour EXECUTER LE PROGRAMME");
         do {
-            entre = scNb.nextInt();
+            try {
+                System.out.println("Que souhaitez vous faire ?");
+                System.out.println("Entrez 1 pour COMPLETER LE PROGRAMME");
+                System.out.println("Entrez 2 pour CONSTRUIRE UN MUR");
+                System.out.println("Entrez 3 pour EXECUTER LE PROGRAMME");
+                entre = Integer.parseInt(scNb.nextLine());
+            } catch (Exception e) {
+                entre = 0;
+            }
         } while (!(entre == 1) && !(entre == 2) && !(entre == 3));
         switch (entre) {
             case 1:
                 int programCard;
                 String wantChangeProgram;
                 do {
-                    System.out.println("Quelle carte voulez vous ajouter au programme ?");
                     for (int i = 0; i < (player.getCardHand()).size(); i++) {
                         System.out.print((i + 1) + ". ");
                         System.out.println(player.hand.get(i).getCardType());
                     }
-                    programCard = scNb.nextInt();
+                    programCard = 0;
+                    try {
+                        System.out.println("Quelle carte voulez vous ajouter au programme ?");
+                        programCard = Integer.parseInt(scNb.nextLine());
+                    } catch (Exception e) {
+                    }
                     programCard = programCard - 1;
                     player.program.add(player.hand.get(programCard));
                     player.discardCard(programCard);
                     do {
-                        System.out.println("Voulez vous ajouter une autre carte ?");
-                        wantChangeProgram = scTxt.nextLine();
+                        wantChangeProgram="o";
+                        if (!player.hand.isEmpty()) {
+                            System.out.println("Voulez vous ajouter une autre carte ?");
+                            wantChangeProgram = scTxt.nextLine();
+                        }
                     } while (!wantChangeProgram.equals("oui") && !wantChangeProgram.equals("non") && !wantChangeProgram.equals("o") && !wantChangeProgram.equals("n"));
                 } while (wantChangeProgram.equals("oui") || wantChangeProgram.equals("o"));
                 discardEndTurn(player);
                 break;
             case 2:
-                int wallCardChoosed;
-                System.out.println("Quel mur voulez vous jouer ?");
-                for (int i = 0; i < (player.getWallCardHand()).size(); i++) {
-                    System.out.print((i + 1) + ". ");
-                    System.out.println(player.wallCardHand.get(i).getWallCardType());
-                }
-                wallCardChoosed = scNb.nextInt();
-                int xWall;
-                int yWall;
-                boolean wallValide = false;
-                do {
-                    grid.displayGridConsole();
-                    System.out.println("A quelles coordonnées souhaitez vous le placer ?");
-                    System.out.println("X ?");
-                    xWall = scNb.nextInt();
-                    System.out.println("Y ?");
-                    yWall = scNb.nextInt();
-                    if (grid.grid[xWall][yWall].getState() == 'E') {
-                        System.out.println(player.wallCardHand.get(wallCardChoosed).getWallCardType());
-                        grid.grid[xWall][yWall].setState(player.wallCardHand.get(wallCardChoosed).getWallCardType());
-                        System.out.println(grid.grid[xWall][yWall].getState());
-                        wallValide = true;
-                    } else {
-                        System.out.println("Cet emplacement n'est pas valide, choisissez en un autre.");
+                if(!player.wallCardHand.isEmpty()) {
+                    int wallCardChoosed = 0;
+                    try {
+                        System.out.println("Quel mur voulez vous jouer ?");
+                        for (int i = 0; i < (player.getWallCardHand()).size(); i++) {
+                            System.out.print((i + 1) + ". ");
+                            System.out.println(player.wallCardHand.get(i).getWallCardType());
+                        }
+                        wallCardChoosed = Integer.parseInt(scNb.nextLine());
+                    } catch (Exception e) {
                     }
-                } while (!wallValide);
-                System.out.println("mouvement validé");
-                grid.displayGridConsole();
-                showCardHand(player);
-                discardEndTurn(player);
-                showCardHand(player);
+                    int xWall;
+                    int yWall;
+                    boolean wallValide = false;
+                    do {
+                        xWall = 0;
+                        yWall = 0;
+                        grid.displayGridConsole();
+                        System.out.println("A quelles coordonnées souhaitez vous le placer ?");
+                        try {
+                            System.out.println("X ?");
+                            xWall = scNb.nextInt();
+                        } catch (Exception e) {
+                        }
+                        try {
+                            System.out.println("Y ?");
+                            yWall = scNb.nextInt();
+                        } catch (Exception e) {
+                        }
+                        if (grid.grid[xWall][yWall].getState() == 'E') {
+                            System.out.println(player.wallCardHand.get(wallCardChoosed).getWallCardType());
+                            grid.grid[xWall][yWall].setState(player.wallCardHand.get(wallCardChoosed).getWallCardType());
+                            System.out.println(grid.grid[xWall][yWall].getState());
+                            wallValide = true;
+                        } else {
+                            System.out.println("Cet emplacement n'est pas valide, choisissez en un autre.");
+                        }
+                    } while (!wallValide);
+                    grid.displayGridConsole();
+                    showCardHand(player);
+                    discardEndTurn(player);
+                    showCardHand(player);
+                }
                 break;
             case 3:
-                for(Card card : player.program){
+                for (Card card : player.program) {
                     Move move = new Move();
-                    switch(card.getCardType()){
+                    switch (card.getCardType()) {
                         case 'B':
                             move.moveForward(player);
                             break;
@@ -188,10 +216,12 @@ public class Game {
                             move.rightRotation(player);
                             break;
                         case 'L':
-                            move.lazerShot(player,players,numberOfPlayers);
+                            move.lazerShot(player, players, numberOfPlayers);
                             break;
                     }
                 }
+                discardEndTurn(player);
+                showCardHand(player);
                 break;
         }
     }
