@@ -57,5 +57,6 @@ public class GraphicalUserInterface extends JFrame{
        JButton btnValidCard = new JButton("Valider la carte");
        btnValidCard.setBounds(500, 624, 150, 30);
        window.getContentPane().add(btnValidCard);
+    }
         
 }
