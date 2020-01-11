@@ -86,6 +86,42 @@ public class Game {
             int randomIndex = rand.nextInt(index.size());
             Player player = this.players.get(i);
             player.setPlayerTurn(index.get(randomIndex));
+            player.setOrientation('S');
+            switch (numberOfPlayers){
+                case 2 :
+                    orderedPlayers.get(0).setPositionX(0);
+                    orderedPlayers.get(0).setPositionY(1);
+                    orderedPlayers.get(0).setColor("orange");
+                    orderedPlayers.get(1).setPositionX(0);
+                    orderedPlayers.get(1).setPositionY(5);
+                    orderedPlayers.get(1).setColor("green");
+                    break;
+                case 3 :
+                    orderedPlayers.get(0).setPositionX(0);
+                    orderedPlayers.get(0).setPositionY(1);
+                    orderedPlayers.get(0).setColor("orange");
+                    orderedPlayers.get(1).setPositionX(0);
+                    orderedPlayers.get(1).setPositionY(3);
+                    orderedPlayers.get(1).setColor("green");
+                    orderedPlayers.get(2).setPositionX(0);
+                    orderedPlayers.get(2).setPositionY(6);
+                    orderedPlayers.get(2).setColor("blue");
+                    break;
+                case 4 :
+                    orderedPlayers.get(0).setPositionX(0);
+                    orderedPlayers.get(0).setPositionY(6);
+                    orderedPlayers.get(0).setColor("orange");
+                    orderedPlayers.get(1).setPositionX(0);
+                    orderedPlayers.get(1).setPositionY(2);
+                    orderedPlayers.get(1).setColor("green");
+                    orderedPlayers.get(2).setPositionX(0);
+                    orderedPlayers.get(2).setPositionY(5);
+                    orderedPlayers.get(2).setColor("blue");
+                    orderedPlayers.get(3).setPositionX(0);
+                    orderedPlayers.get(3).setPositionY(7);
+                    orderedPlayers.get(3).setColor("yellow");
+                    break;
+            }
             index.remove(randomIndex);
         }
     }
