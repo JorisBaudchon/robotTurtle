@@ -140,13 +140,12 @@ public class Move extends Grid {
         player.setPositionX(positionX);
     }
 
-    public void lazerShot(Player player, Grid grid[][], ArrayList<Player> players, int numberOfPlayers) {
+    public void lazerShot(Player player, ArrayList<Player> players, int numberOfPlayers) {
         char orientation = player.getOrientation();
         int positionY = player.getPositionY();
         int positionX = player.getPositionX();
-        int i = 0;
+        int i = 0;   
         int j = 0;
-
         switch (orientation) {
             case 'N':
                 while (this.grid[positionX][positionY - i].getState() == 'E') {
