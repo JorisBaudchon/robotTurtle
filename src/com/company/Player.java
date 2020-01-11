@@ -6,11 +6,11 @@ import java.util.Collections;
 
 public class Player {
 
-    private ArrayList<Card> hand;
+    ArrayList<Card> hand;
     private ArrayList<Card> deck;
     private ArrayList<Card> discard;
-    private ArrayList<Card> program;
-    private ArrayList<WallCard> wallCardHand;
+    ArrayList<Card> program;
+    ArrayList<WallCard> wallCardHand;
     private int playerTurn;
     private String pseudo;
     private String color;
@@ -26,54 +26,54 @@ public class Player {
     private int nbOfIceWallCards = 2;
     private boolean finished;
 
-    private Player(String pseudo) {
+    Player(String pseudo) {
         this.pseudo = pseudo;
         this.orientation = 'S';
         this.playerTurn = 0;
         this.finished = false;
     }
 
-    private int getPlayerTurn() {
+    int getPlayerTurn() {
         return this.playerTurn;
     }
 
-    private void setPlayerTurn(int playerTurn) {
+    void setPlayerTurn(int playerTurn) {
         this.playerTurn = playerTurn;
     }
 
-    private char getOrientation() {
+    char getOrientation() {
         return orientation;
     }
 
-    private void setOrientation(char orientation) {
+    void setOrientation(char orientation) {
         this.orientation = orientation;
     }
 
-    private String getPseudo() {
+    String getPseudo() {
         return this.pseudo;
     }
 
-    private String getColor() {
+    String getColor() {
         return this.color;
     }
 
-    private int getPositionX() {
+    int getPositionX() {
         return this.positionX;
     }
 
-    private void setPositionX(int positionX) {
+    void setPositionX(int positionX) {
         this.positionX = positionX;
     }
 
-    private int getPositionY() {
+    int getPositionY() {
         return this.positionY;
     }
 
-    private void setPositionY(int positionY) {
+    void setPositionY(int positionY) {
         this.positionY = positionY;
     }
 
-    public void initDeck() {
+    void initDeck() {
         this.deck = new ArrayList<>();
         this.discard = new ArrayList<>();
         for (int i = 0; i < nbOfBlueCardsInDeck; i++) {
@@ -95,7 +95,7 @@ public class Player {
         Collections.shuffle(this.deck);
     }
 
-    private void drawUntilHandIsFull(int nbOfCardsInHand) {
+    void drawUntilHandIsFull(int nbOfCardsInHand) {
         for (int i = 0; i < (nbOfCardsMaxInHand - nbOfCardsInHand); i++) {
             this.hand.add(this.deck.get(0));
             this.deck.remove(0);
@@ -109,17 +109,17 @@ public class Player {
         }
     }
 
-    private void discardCard(int deletedCard) {
+    void discardCard(int deletedCard) {
         this.discard.add(this.deck.get(0));
         this.hand.remove(deletedCard);
     }
 
-    private void initHand() {
+    void initHand() {
         this.hand = new ArrayList<>();
         drawUntilHandIsFull(0);
     }
 
-    private void initWallHand() {
+    void initWallHand() {
         this.wallCardHand = new ArrayList<>();
         for (int i = 0; i < nbOfStoneWallCards; i++) {
             WallCard wallCard = new WallCard('S');
@@ -131,15 +131,15 @@ public class Player {
         }
     }
 
-    private boolean isFinished() {
+    boolean isFinished() {
         return finished;
     }
 
-    private ArrayList<Card> getCardHand() {
+    ArrayList<Card> getCardHand() {
         return this.hand;
     }
 
-    private ArrayList<WallCard> getWallCardHand() {
+    ArrayList<WallCard> getWallCardHand() {
         return this.wallCardHand;
     }
 
@@ -147,7 +147,7 @@ public class Player {
         return this.program;
     }
 
-    private void createProgram() {
+    public void createProgram() {
         this.program = new ArrayList<>();
     }
 

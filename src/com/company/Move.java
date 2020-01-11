@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 import com.company.Game.*;
 
-public class Move extends Grid {
+class Move extends Grid {
 
-    public static void leftRotation(Player player) {
+    static void leftRotation(Player player) {
         char orientation = player.getOrientation();
         switch (orientation) {
             case 'N':
@@ -25,7 +25,7 @@ public class Move extends Grid {
         player.setOrientation(orientation);
     }
 
-    public static void rightRotation(Player player) {
+    static void rightRotation(Player player) {
         char orientation = player.getOrientation();
         switch (orientation) {
             case 'N':
@@ -44,7 +44,7 @@ public class Move extends Grid {
         player.setOrientation(orientation);
     }
 
-    public void backToStart(Player player, int numberOfPlayers) {
+    private void backToStart(Player player, int numberOfPlayers) {
         String color = player.getColor();
         grid[player.getPositionX()][player.getPositionY()].setState('E');
         switch (numberOfPlayers) {
@@ -115,7 +115,7 @@ public class Move extends Grid {
     }
 
 
-    public void moveForward(Player player) {
+    void moveForward(Player player) {
         grid[player.getPositionX()][player.getPositionY()].setState('E');
         char orientation = player.getOrientation();
         int positionY = player.getPositionY();
@@ -140,7 +140,7 @@ public class Move extends Grid {
         player.setPositionX(positionX);
     }
 
-    public void lazerShot(Player player, ArrayList<Player> players, int numberOfPlayers) {
+    void laserShot(Player player, ArrayList<Player> players, int numberOfPlayers) {
         char orientation = player.getOrientation();
         int positionY = player.getPositionY();
         int positionX = player.getPositionX();
@@ -166,58 +166,58 @@ public class Move extends Grid {
                 } else if (positionY - i == 0) {
                 }
             case 'W':
-                while (this.grid[positionX-i][positionY].getState() == 'E') {
+                while (this.grid[positionX - i][positionY].getState() == 'E') {
                     i = i++;
                 }
-                if (this.grid[positionX-i][positionY ].getState() == 'T') {
-                    String color = this.grid[positionX-i][positionY].getTurtle();
+                if (this.grid[positionX - i][positionY].getState() == 'T') {
+                    String color = this.grid[positionX - i][positionY].getTurtle();
                     for (Player playerAttacked : players) {
                         if (playerAttacked.getColor() == color) {
                             backToStart(playerAttacked, numberOfPlayers);
                         }
                     }
-                } else if (this.grid[positionX-i][positionY].getState() == 'S') {
-                } else if (this.grid[positionX-i][positionY].getState() == 'I') {
-                    this.grid[positionX-i][positionY].setState('E');
-                } else if (this.grid[positionX-i][positionY].getState() == 'J') {
+                } else if (this.grid[positionX - i][positionY].getState() == 'S') {
+                } else if (this.grid[positionX - i][positionY].getState() == 'I') {
+                    this.grid[positionX - i][positionY].setState('E');
+                } else if (this.grid[positionX - i][positionY].getState() == 'J') {
                     backToStart(player, numberOfPlayers);
-                } else if (positionX-i == 0) {
+                } else if (positionX - i == 0) {
                 }
             case 'S':
-                while (this.grid[positionX][positionY+i].getState() == 'E') {
+                while (this.grid[positionX][positionY + i].getState() == 'E') {
                     i = i++;
                 }
-                if (this.grid[positionX][positionY+i].getState() == 'T') {
-                    String color = this.grid[positionX-i][positionY].getTurtle();
+                if (this.grid[positionX][positionY + i].getState() == 'T') {
+                    String color = this.grid[positionX - i][positionY].getTurtle();
                     for (Player playerAttacked : players) {
                         if (playerAttacked.getColor() == color) {
                             backToStart(playerAttacked, numberOfPlayers);
                         }
                     }
-                } else if (this.grid[positionX][positionY+i].getState() == 'S') {
-                } else if (this.grid[positionX][positionY+i].getState() == 'I') {
-                    this.grid[positionX][positionY+i].setState('E');
-                } else if (this.grid[positionX][positionY+i].getState() == 'J') {
+                } else if (this.grid[positionX][positionY + i].getState() == 'S') {
+                } else if (this.grid[positionX][positionY + i].getState() == 'I') {
+                    this.grid[positionX][positionY + i].setState('E');
+                } else if (this.grid[positionX][positionY + i].getState() == 'J') {
                     backToStart(player, numberOfPlayers);
-                } else if (positionY+i == 0) {
+                } else if (positionY + i == 0) {
                 }
             case 'E':
-                while (this.grid[positionX+i][positionY].getState() == 'E') {
+                while (this.grid[positionX + i][positionY].getState() == 'E') {
                     i = i++;
                 }
-                if (this.grid[positionX+i][positionY].getState() == 'T') {
-                    String color = this.grid[positionX+i][positionY].getTurtle();
+                if (this.grid[positionX + i][positionY].getState() == 'T') {
+                    String color = this.grid[positionX + i][positionY].getTurtle();
                     for (Player playerAttacked : players) {
                         if (playerAttacked.getColor() == color) {
                             backToStart(playerAttacked, numberOfPlayers);
                         }
                     }
-                } else if (this.grid[positionX+i][positionY].getState() == 'S') {
-                } else if (this.grid[positionX+i][positionY].getState() == 'I') {
-                    this.grid[positionX+i][positionY].setState('E');
-                } else if (this.grid[positionX+i][positionY].getState() == 'J') {
+                } else if (this.grid[positionX + i][positionY].getState() == 'S') {
+                } else if (this.grid[positionX + i][positionY].getState() == 'I') {
+                    this.grid[positionX + i][positionY].setState('E');
+                } else if (this.grid[positionX + i][positionY].getState() == 'J') {
                     backToStart(player, numberOfPlayers);
-                } else if (positionX+i == 0) {
+                } else if (positionX + i == 0) {
                 }
         }
     }

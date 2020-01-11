@@ -4,7 +4,7 @@ public class Card {
 
     private char cardType;
 
-    public char getCardType() {
+    char getCardType() {
         return this.cardType;
     }
 
@@ -12,7 +12,7 @@ public class Card {
         this.cardType = cardType;
     }
 
-    public Card(char cardType) {
+    Card(char cardType) {
         this.cardType = cardType;
     }
 }

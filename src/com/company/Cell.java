@@ -8,7 +8,7 @@ public class Cell {
     String turtle;
 
     public Cell() {
-        this.state='E';
+        this.state = 'E';
         this.jewel = "";
         this.turtle = "";
     }

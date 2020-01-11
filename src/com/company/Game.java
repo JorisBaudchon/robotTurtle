@@ -267,7 +267,7 @@ public class Game {
                             move.rightRotation(player);
                             break;
                         case 'L':
-                            move.lazerShot(player, players, numberOfPlayers);
+                            move.laserShot(player, players, numberOfPlayers);
                             break;
                     }
                 }
