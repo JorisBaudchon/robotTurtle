@@ -3,8 +3,8 @@ package com.company;
 import java.util.*;
 
 public class Game {
-    public static Scanner scTxt = new Scanner(System.in);
-    public static Scanner scNb = new Scanner(System.in);
+    private static Scanner scTxt = new Scanner(System.in);
+    private static Scanner scNb = new Scanner(System.in);
     private int numberOfPlayers;
     private ArrayList<Player> players = new ArrayList<>();
     private ArrayList<Player> orderedPlayers = new ArrayList<>();
