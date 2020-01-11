@@ -144,7 +144,7 @@ public class Move extends Grid {
         char orientation = player.getOrientation();
         int positionY = player.getPositionY();
         int positionX = player.getPositionX();
-        int i = 0;   
+        int i = 0;
         int j = 0;
         switch (orientation) {
             case 'N':
