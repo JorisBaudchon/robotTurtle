@@ -6,7 +6,7 @@ public class Main {
     
     public static void main(String[] args) {
         
-        gui = new GraphicalUserInterface();
+        //gui = new GraphicalUserInterface();
         Game Game = new Game();
         Game.initGame();
     }
