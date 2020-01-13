@@ -3,17 +3,17 @@ package com.company;
 import java.util.List;
 
 public class Cell {
-    char state;
-    String jewel;
-    String turtle;
+    private char state;
+    private String jewel;
+    private String turtle;
 
-    public Cell() {
+    Cell() {
         this.state = 'E';
         this.jewel = "";
         this.turtle = "";
     }
 
-    public String getTurtle() {
+    String getTurtle() {
         return this.turtle;
     }
 
@@ -22,21 +22,21 @@ public class Cell {
     }
 
 
-    public void setJewel(String jewelColor) {
+    void setJewel(String jewelColor) {
         this.state = 'J';
         this.jewel = jewelColor;
     }
 
-    public void setTurtle(String turtle) {
+    void setTurtle(String turtle) {
         this.turtle = turtle;
         this.state = 'T';
     }
 
-    public char getState() {
+    char getState() {
         return this.state;
     }
 
-    public void setState(char state) {
+    void setState(char state) {
         this.state = state;
     }
 }

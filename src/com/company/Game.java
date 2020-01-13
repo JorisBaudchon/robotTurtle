@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.*;
 
-public class Game {
+class Game {
     private static Scanner scTxt = new Scanner(System.in);
     private static Scanner scNb = new Scanner(System.in);
     private int numberOfPlayers;

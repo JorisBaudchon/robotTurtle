@@ -4,7 +4,7 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Player {
+class Player {
 
     ArrayList<Card> hand;
     private ArrayList<Card> deck;
@@ -143,15 +143,15 @@ public class Player {
         return this.wallCardHand;
     }
 
-    public ArrayList<Card> getProgram() {
+    ArrayList<Card> getProgram() {
         return this.program;
     }
 
-    public void createProgram() {
+    void createProgram() {
         this.program = new ArrayList<>();
     }
 
-    public void setColor(String color) {
+    void setColor(String color) {
         this.color = color;
     }
 }

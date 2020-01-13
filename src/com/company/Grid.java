@@ -59,24 +59,24 @@ class Grid {
         System.out.println("    0 1 2 3 4 5 6 7 \n  +-----------------+");
         String total = "";
         for (int i = 0; i <= 7; i++) {
-            String ligne = i + " | ";
+            StringBuilder ligne = new StringBuilder(i + " | ");
             for (int j = 0; j <= 7; j++) {
                 char state = grid[i][j].getState();
                 switch (state) {
                     case ('E'):
-                        ligne = ligne + 'E' + " ";
+                        ligne.append('E').append(" ");
                         break;
                     case ('S'):
-                        ligne = ligne + 'S' + " ";
+                        ligne.append('S').append(" ");
                         break;
                     case ('I'):
-                        ligne = ligne + 'I' + " ";
+                        ligne.append('I').append(" ");
                         break;
                     case ('T'):
-                        ligne = ligne + 'T' + " ";
+                        ligne.append('T').append(" ");
                         break;
                     case ('J'):
-                        ligne = ligne + 'J' + " ";
+                        ligne.append('J').append(" ");
                         break;
                 }
             }
