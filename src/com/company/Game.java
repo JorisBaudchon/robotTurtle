@@ -113,9 +113,9 @@ class Game {
                 break;
             case 3:
                 orderedPlayers.get(0).setPositionX(0);
-                orderedPlayers.get(0).setPositionY(1);
+                orderedPlayers.get(0).setPositionY(0);
                 orderedPlayers.get(0).setColor("orange");
-                graphicalUserInterface.btnGrid[0][1].setIcon(graphicalUserInterface.OrangeTurtle);
+                graphicalUserInterface.btnGrid[0][0].setIcon(graphicalUserInterface.OrangeTurtle);
                 orderedPlayers.get(1).setPositionX(0);
                 orderedPlayers.get(1).setPositionY(3);
                 orderedPlayers.get(1).setColor("green");

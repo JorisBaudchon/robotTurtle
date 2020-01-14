@@ -73,6 +73,14 @@ public class GraphicalUserInterface extends JFrame {
         }
     };
 
+    public void setNbOfIceWall(JLabel nbOfIceWall) {
+        this.nbOfIceWall = nbOfIceWall;
+    }
+
+    public void setNbOfWall(JLabel nbOfWall) {
+        this.nbOfWall = nbOfWall;
+    }
+
     JPanel panelHand = new JPanel(new GridLayout(1, 5));
     ImageIcon imgBackground = new ImageIcon("images/background.jpeg");
     //Image img = background.getImage();
