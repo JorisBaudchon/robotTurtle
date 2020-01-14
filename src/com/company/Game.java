@@ -9,10 +9,12 @@ class Game {
     private ArrayList<Player> players = new ArrayList<>();
     private ArrayList<Player> orderedPlayers = new ArrayList<>();
     private Grid grid = new Grid();
+    private GraphicalUserInterface graphicalUserInterface;
 
-    private void initGame() {
-        System.out.println("Bienvenue au jeu ROBOT TURTLES !");
-        do {
+    public void initGame() {
+            System.out.println("Bienvenue au jeu ROBOT TURTLES !");
+            boolean end = false;
+            do {
             boolean newGame = askNewGame();
             if (!newGame) {
                 System.out.println("Merci d'être venu !");
@@ -23,11 +25,12 @@ class Game {
                     Player player = new Player(newPlayer);
                     this.players.add(player);
                 }
+                graphicalUserInterface = new GraphicalUserInterface();
                 initTurnOrder();
                 showTurnOrder();
-                grid.initGrid(numberOfPlayers);
+                grid.initGrid(numberOfPlayers, graphicalUserInterface);
                 grid.placeTurtle(numberOfPlayers);
-                grid.placeJewel(numberOfPlayers);
+                grid.placeJewel(numberOfPlayers, graphicalUserInterface);
 
                 grid.displayGridConsole();
                 for (int i = 0; i < numberOfPlayers; i++) {
@@ -43,9 +46,8 @@ class Game {
                     }
                 }
             }
-        }while (!end)
+        } while (end);
     }
-
 
     private boolean askNewGame() {
         String entre;
@@ -89,43 +91,60 @@ class Game {
             Player player = this.players.get(i);
             player.setPlayerTurn(index.get(randomIndex));
             player.setOrientation('S');
-            switch (numberOfPlayers) {
-                case 2:
-                    orderedPlayers.get(0).setPositionX(0);
-                    orderedPlayers.get(0).setPositionY(1);
-                    orderedPlayers.get(0).setColor("orange");
-                    orderedPlayers.get(1).setPositionX(0);
-                    orderedPlayers.get(1).setPositionY(5);
-                    orderedPlayers.get(1).setColor("green");
-                    break;
-                case 3:
-                    orderedPlayers.get(0).setPositionX(0);
-                    orderedPlayers.get(0).setPositionY(1);
-                    orderedPlayers.get(0).setColor("orange");
-                    orderedPlayers.get(1).setPositionX(0);
-                    orderedPlayers.get(1).setPositionY(3);
-                    orderedPlayers.get(1).setColor("green");
-                    orderedPlayers.get(2).setPositionX(0);
-                    orderedPlayers.get(2).setPositionY(6);
-                    orderedPlayers.get(2).setColor("blue");
-                    break;
-                case 4:
-                    orderedPlayers.get(0).setPositionX(0);
-                    orderedPlayers.get(0).setPositionY(6);
-                    orderedPlayers.get(0).setColor("orange");
-                    orderedPlayers.get(1).setPositionX(0);
-                    orderedPlayers.get(1).setPositionY(2);
-                    orderedPlayers.get(1).setColor("green");
-                    orderedPlayers.get(2).setPositionX(0);
-                    orderedPlayers.get(2).setPositionY(5);
-                    orderedPlayers.get(2).setColor("blue");
-                    orderedPlayers.get(3).setPositionX(0);
-                    orderedPlayers.get(3).setPositionY(7);
-                    orderedPlayers.get(3).setColor("yellow");
-                    break;
-            }
             index.remove(randomIndex);
         }
+        for (int i = 0; i < numberOfPlayers + 1; i++) {
+            for (int j = 0; j < numberOfPlayers; j++) {
+                if (players.get(j).getPlayerTurn() == i) {
+                    this.orderedPlayers.add(players.get(j));
+                }
+            }
+        }
+        switch (numberOfPlayers) {
+            case 2:
+                orderedPlayers.get(0).setPositionX(0);
+                orderedPlayers.get(0).setPositionY(1);
+                orderedPlayers.get(0).setColor("orange");
+                graphicalUserInterface.btnGrid[0][1].setIcon(graphicalUserInterface.OrangeTurtle);
+                orderedPlayers.get(1).setPositionX(0);
+                orderedPlayers.get(1).setPositionY(5);
+                orderedPlayers.get(1).setColor("green");
+                graphicalUserInterface.btnGrid[0][5].setIcon(graphicalUserInterface.GreenTurtle);
+                break;
+            case 3:
+                orderedPlayers.get(0).setPositionX(0);
+                orderedPlayers.get(0).setPositionY(1);
+                orderedPlayers.get(0).setColor("orange");
+                graphicalUserInterface.btnGrid[0][1].setIcon(graphicalUserInterface.OrangeTurtle);
+                orderedPlayers.get(1).setPositionX(0);
+                orderedPlayers.get(1).setPositionY(3);
+                orderedPlayers.get(1).setColor("green");
+                graphicalUserInterface.btnGrid[0][3].setIcon(graphicalUserInterface.GreenTurtle);
+                orderedPlayers.get(2).setPositionX(0);
+                orderedPlayers.get(2).setPositionY(6);
+                orderedPlayers.get(2).setColor("blue");
+                graphicalUserInterface.btnGrid[0][6].setIcon(graphicalUserInterface.BlueTurtle);
+                break;
+            case 4:
+                orderedPlayers.get(0).setPositionX(0);
+                orderedPlayers.get(0).setPositionY(0);
+                orderedPlayers.get(0).setColor("orange");
+                graphicalUserInterface.btnGrid[0][0].setIcon(graphicalUserInterface.OrangeTurtle);
+                orderedPlayers.get(1).setPositionX(0);
+                orderedPlayers.get(1).setPositionY(2);
+                orderedPlayers.get(1).setColor("green");
+                graphicalUserInterface.btnGrid[0][2].setIcon(graphicalUserInterface.GreenTurtle);
+                orderedPlayers.get(2).setPositionX(0);
+                orderedPlayers.get(2).setPositionY(5);
+                orderedPlayers.get(2).setColor("blue");
+                graphicalUserInterface.btnGrid[0][5].setIcon(graphicalUserInterface.BlueTurtle);
+                orderedPlayers.get(3).setPositionX(0);
+                orderedPlayers.get(3).setPositionY(7);
+                orderedPlayers.get(3).setColor("yellow");
+                graphicalUserInterface.btnGrid[0][7].setIcon(graphicalUserInterface.YellowTurtle);
+                break;
+        }
+
     }
 
     private void showTurnOrder() {
@@ -134,7 +153,6 @@ class Game {
             for (int j = 0; j < numberOfPlayers; j++) {
                 if (players.get(j).getPlayerTurn() == i) {
                     System.out.println((players.get(j)).getPlayerTurn() + ". " + (players.get(j)).getPseudo());
-                    this.orderedPlayers.add(players.get(j));
                 }
             }
         }

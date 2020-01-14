@@ -2,7 +2,7 @@ package com.company;
 
 public class Card {
 
-    private char cardType;
+    char cardType;
 
     char getCardType() {
         return this.cardType;
@@ -12,7 +12,7 @@ public class Card {
         this.cardType = cardType;
     }
 
-    Card(char cardType) {
+    public Card(char cardType) {
         this.cardType = cardType;
     }
 }

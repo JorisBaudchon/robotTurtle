@@ -4,7 +4,7 @@ class Grid {
 
     Cell[][] grid = new Cell[8][8];
 
-    void initGrid(int numberOfPlayers) {
+    void initGrid(int numberOfPlayers, GraphicalUserInterface graphicalUserInterface) {
         grid = new Cell[8][8];
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
@@ -14,23 +14,30 @@ class Grid {
         if (numberOfPlayers == 2 || numberOfPlayers == 3) {
             for (int i = 0; i < 8; i++) {
                 grid[i][7].setState('S');
+                graphicalUserInterface.btnGrid[i][7].setIcon(graphicalUserInterface.Wall);
             }
         }
     }
 
-    void placeJewel(int numberOfPlayers) {
+    void placeJewel(int numberOfPlayers, GraphicalUserInterface graphicalUserInterface) {
         switch (numberOfPlayers) {
             case 2:
                 grid[7][3].setJewel("green");
+                graphicalUserInterface.btnGrid[7][3].setIcon(graphicalUserInterface.GreenJewel);
                 break;
             case 3:
                 grid[7][0].setJewel("purple");
+                graphicalUserInterface.btnGrid[7][0].setIcon(graphicalUserInterface.PurpleJewel);
                 grid[7][3].setJewel("green");
+                graphicalUserInterface.btnGrid[7][3].setIcon(graphicalUserInterface.GreenJewel);
                 grid[7][6].setJewel("blue");
+                graphicalUserInterface.btnGrid[7][6].setIcon(graphicalUserInterface.BlueJewel);
                 break;
             case 4:
                 grid[7][1].setJewel("purple");
+                graphicalUserInterface.btnGrid[7][1].setIcon(graphicalUserInterface.PurpleJewel);
                 grid[7][6].setJewel("blue");
+                graphicalUserInterface.btnGrid[7][6].setIcon(graphicalUserInterface.BlueJewel);
                 break;
         }
     }
