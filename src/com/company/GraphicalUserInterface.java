@@ -14,19 +14,6 @@ import java.util.TreeMap;
 
 
 public class GraphicalUserInterface extends JFrame {
-    /*public GraphicalUserInterface(){
-        
-        JFrame window = new JFrame();
-        window.setTitle("Robot Turtles");
-        window.setResizable(false);
-        window.setVisible(true);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.pack();
-        window.setSize(1000, 700);
-        window.setAlwaysOnTop(true);
-        window.setLocationRelativeTo(null);
-        window.getContentPane().setLayout(null);
-       */
 
     JTextPane textPane = new JTextPane();
     private JFrame window = new JFrame();
@@ -36,10 +23,10 @@ public class GraphicalUserInterface extends JFrame {
     private JLabel nbOfWall = new JLabel("1");
     private boolean NoIceWall = false;
     private boolean NoWall = false;
-    private String alertPlayer;// variable qui affichera des alertes au joueur
-    private static String selectedWall; //variable qui permettra au main de savoir quel mur a ete selectionne
-    private boolean actionWall; // variable qui permettra au main de savoir s'il y a eu une action
-    private boolean actionGrid; // variable qui permettra au main de savoir s'il y a eu une action sur le plateau
+    private String alertPlayer;
+    private static String selectedWall;
+    private boolean actionWall;
+    private boolean actionGrid;
     private boolean actionHand;
     private boolean actionBtnValidCard;
     private int[] coord = new int[2];
@@ -288,7 +275,6 @@ public class GraphicalUserInterface extends JFrame {
         this.textPane.setText(message);
     }
 
-    //Permet de récupérer la treemap avec comme clé le nom de la tortue et comme valeur sa position
     public void setDirectionPlayers(TreeMap<String, String> tree) {
         this.directionPlayer = tree;
     }
@@ -301,15 +287,15 @@ public class GraphicalUserInterface extends JFrame {
     }
 
     public String getSelectedWall() {
-        actionGrid = false; // idem
-        actionHand = false; // idem
+        actionGrid = false;
+        actionHand = false;
         actionWall = false;
         return selectedWall;
     }
 
     public int[] getCoord() {
-        actionWall = false;  // idem
-        actionGrid = false;  // idem
+        actionWall = false;
+        actionGrid = false;
         actionHand = false;
         return coord;
     }
