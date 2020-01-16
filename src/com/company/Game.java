@@ -276,7 +276,7 @@ class Game {
                     Move move = new Move();
                     switch (card.getCardType()) {
                         case 'B':
-                            move.moveForward(player);
+                            move.moveForward(player, grid);
                             break;
                         case 'Y':
                             move.leftRotation(player);
@@ -285,7 +285,7 @@ class Game {
                             move.rightRotation(player);
                             break;
                         case 'L':
-                            move.laserShot(player, players, numberOfPlayers);
+                            move.laserShot(player, players, numberOfPlayers, grid);
                             break;
                     }
                 }
