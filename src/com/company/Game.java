@@ -184,6 +184,7 @@ class Game {
     private void turn(Player player) {
         int entre;
         System.out.println("C'est le tour de " + player.getPseudo());
+        grid.displayGridConsole();
         showCardHand(player);
         showWallCardHand(player);
         showProgram(player);

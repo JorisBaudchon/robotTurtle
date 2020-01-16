@@ -138,6 +138,7 @@ public class Move {
                 break;
         }
         grid.grid[positionX][positionY].setTurtle(color);
+        grid.grid[positionX][positionY].setState('T');
         player.setPositionY(positionY);
         player.setPositionX(positionX);
     }
