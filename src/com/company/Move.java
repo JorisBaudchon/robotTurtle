@@ -116,13 +116,13 @@ public class Move {
 
 
     void moveForward(Player player, Grid grid) {
-        grid.grid[player.getPositionX()][player.getPositionY()].setState('E');
         char orientation = player.getOrientation();
         int positionY = player.getPositionY();
         int positionX = player.getPositionX();
+        grid.grid[positionX][positionY].setState('E');
         String color = player.getColor();
-        System.out.println(player.getPositionX());
-        System.out.println(player.getPositionY());
+        System.out.println(positionX);
+        System.out.println(positionY);
         switch (orientation) {
             case 'N':
                 positionY = positionY - 1;

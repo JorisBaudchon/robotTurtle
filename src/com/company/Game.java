@@ -12,9 +12,9 @@ class Game {
     private GraphicalUserInterface graphicalUserInterface;
 
     public void initGame() {
-            System.out.println("Bienvenue au jeu ROBOT TURTLES !");
-            boolean end = false;
-            do {
+        System.out.println("Bienvenue au jeu ROBOT TURTLES !");
+        boolean end = false;
+        do {
             boolean newGame = askNewGame();
             if (!newGame) {
                 System.out.println("Merci d'être venu !");
@@ -202,28 +202,29 @@ class Game {
         switch (entre) {
             case 1:
                 int programCard;
-                String wantChangeProgram;
+                String wantChangeProgram = "";
                 do {
                     for (int i = 0; i < (player.getCardHand()).size(); i++) {
                         System.out.print((i + 1) + ". ");
                         System.out.println(player.hand.get(i).getCardType());
                     }
                     programCard = 0;
-                    try {
-                        System.out.println("Quelle carte voulez vous ajouter au programme ?");
-                        programCard = Integer.parseInt(scNb.nextLine());
-                    } catch (Exception e) {
-                    }
+                    do {
+                        try {
+                            System.out.println("Quelle carte voulez vous ajouter au programme ?");
+                            programCard = Integer.parseInt(scNb.nextLine());
+                        } catch (Exception e) {
+                        }
+                    } while (programCard >= 0 && programCard <= player.hand.size());
                     programCard = programCard - 1;
                     player.program.add(player.hand.get(programCard));
                     player.discardCard(programCard);
-                    do {
-                        wantChangeProgram = "o";
-                        if (!player.hand.isEmpty()) {
-                            System.out.println("Voulez vous ajouter une autre carte ?");
+                    if (!player.hand.isEmpty()) {
+                        System.out.println("Voulez vous ajouter une autre carte ?");
+                        do {
                             wantChangeProgram = scTxt.nextLine();
-                        }
-                    } while (!wantChangeProgram.equals("oui") && !wantChangeProgram.equals("non") && !wantChangeProgram.equals("o") && !wantChangeProgram.equals("n"));
+                        } while (!wantChangeProgram.equals("oui") && !wantChangeProgram.equals("non") && !wantChangeProgram.equals("o") && !wantChangeProgram.equals("n"));
+                    }
                 } while (wantChangeProgram.equals("oui") || wantChangeProgram.equals("o"));
                 discardEndTurn(player);
                 break;
@@ -295,6 +296,7 @@ class Game {
                 break;
         }
     }
+
 
     private void showWallCardHand(Player player) {
         System.out.print("Voici vos murs disponibles :");
