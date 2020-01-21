@@ -101,23 +101,22 @@ public class GraphicalUserInterface extends JFrame {
 
         //Boutons de la main du joueur
         for (int i = 0; i < btnCard.length; i++) {
-            JButton b = new JButton();
-            b.setVisible(true);
-            b.setName(i + ";0");
-            b.addActionListener(new ActionListener() {//action pour le clic d'une carte
+            JButton button = new JButton();
+            button.setVisible(true);
+            button.setName(i + ";0");
+            button.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    JButton bbout = (JButton) e.getSource();
-                    if (bbout.getIcon() == null) {
-                        //si le bouton n'a pas de carte, on ne prend pas en compte le clic
+                    JButton buttonH = (JButton) e.getSource();
+                    if (buttonH.getIcon() == null) {
                         actionHand = false;
                     } else {
-                        String[] temp = bbout.getName().split(";");
+                        String[] temp = buttonH.getName().split(";");
                         indexHand = Integer.parseInt(temp[0]);
                         actionHand = true;
                     }
                 }
             });
-            btnCard[i] = b;
+            btnCard[i] = button;
             this.panelHand.add(btnCard[i]);
         }
 
@@ -129,7 +128,6 @@ public class GraphicalUserInterface extends JFrame {
                 btn.setOpaque(false);
                 btn.setVisible(true);
                 btn.setContentAreaFilled(false);
-                btn.setName(i + ";" + j);
                 btn.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         JButton b = (JButton) e.getSource();
@@ -164,23 +162,18 @@ public class GraphicalUserInterface extends JFrame {
         btnDiscard.setBounds(1030, 650, 115, 50);
         this.bigPanel.add(btnDiscard);
 
-        textPane.setBackground(Color.GRAY);
-        textPane.setForeground(new Color(0, 130, 130));
-        textPane.setFont(new Font("Roboto", Font.PLAIN, 40));
-
 
         this.textPane.setBounds(810, 65, 207, 403);
         this.textPane.setBackground(null);
         bigPanel.add(this.textPane);
 
-        this.panelWall.setBounds(1100, 287, 58, 171);
+        this.panelWall.setBounds(1100, 287, 54, 110);
 
         bigPanel.add(this.panelWall);
-        this.panelWall.setLayout(new GridLayout(3, 1, 0, 0));
+        this.panelWall.setLayout(new GridLayout(2, 1, 0, 0));
         JButton btnWall = new JButton();
         btnWall.addActionListener(new ActionListener() {
-            //action du bouton : quand on appuit sur ce bouton, la variable action mur est mise a true
-            //comme ça, le main peut savoir que l'utilisateur a choisi son mur*/
+     
             public void actionPerformed(ActionEvent arg0) {
                 selectedWall = "Mur";
                 if (!NoWall) {
@@ -214,37 +207,19 @@ public class GraphicalUserInterface extends JFrame {
 
 
         nbOfWall.setFont(new Font("Roboto", Font.BOLD, 30));
-        nbOfWall.setBounds(1060, 300, 50, 56);
+        nbOfWall.setBounds(1060, 290, 50, 56);
         bigPanel.add(nbOfWall);
 
         nbOfIceWall.setFont(new Font("Roboto", Font.BOLD, 30));
-        nbOfIceWall.setBounds(1060, 325, 100, 100);
+        nbOfIceWall.setBounds(1060, 320, 100, 100);
         bigPanel.add(nbOfIceWall);
 
         this.window.setVisible(true);
 
     }
 
-    public void setNbWall(int[] gridNbOfWall) {
-        nbOfIceWall.setText(":" + gridNbOfWall[1]);
-        nbOfWall.setText(":" + gridNbOfWall[0]);
-        for (int i = 0; i < 3; i++) {
-            if (gridNbOfWall[i] == 0) {
-                if (i == 0) {
-                    NoWall = true;
-                } else NoWall = false;
-                if (i == 1) {
-                    NoWall = true;
-                } else NoWall = false;
-                if (i == 2) {
-                    NoIceWall = true;
-                } else NoIceWall = false;
-            }
-        }
+    
 
-    }
-
-    // Afficher les cartes du joueur
     public void setHand(List<Card> playerHand) {
         if (playerHand.size() < 5) {
             for (int i = playerHand.size(); i < 5; i++) {
@@ -270,6 +245,27 @@ public class GraphicalUserInterface extends JFrame {
             }
         }
     }
+    
+    
+    public void setNbWall(int[] gridNbOfWall) {
+        nbOfIceWall.setText(":" + gridNbOfWall[1]);
+        nbOfWall.setText(":" + gridNbOfWall[0]);
+        for (int i = 0; i < 3; i++) {
+            if (gridNbOfWall[i] == 0) {
+                if (i == 0) {
+                    NoWall = true;
+                } else NoWall = false;
+                if (i == 1) {
+                    NoWall = true;
+                } else NoWall = false;
+                if (i == 2) {
+                    NoIceWall = true;
+                } else NoIceWall = false;
+            }
+        }
+
+    }
+    
 
     public void message(String message) {
         this.textPane.setText(message);
