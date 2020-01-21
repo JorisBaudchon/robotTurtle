@@ -31,7 +31,6 @@ public class GraphicalUserInterface extends JFrame {
     private boolean actionBtnValidCard;
     private int[] coord = new int[2];
     private int indexHand;
-    private TreeMap<String, String> directionPlayer = new TreeMap<>();
     ImageIcon YellowCard = new ImageIcon(new ImageIcon("images/cards/YellowCard.png").getImage().getScaledInstance(85, 150, Image.SCALE_DEFAULT));
     ImageIcon BlueCard = new ImageIcon(new ImageIcon("images/cards/BlueCard.png").getImage().getScaledInstance(85, 150, Image.SCALE_DEFAULT));
     ImageIcon LaserCard = new ImageIcon(new ImageIcon("images/cards/LaserCard.png").getImage().getScaledInstance(85, 150, Image.SCALE_DEFAULT));
@@ -269,10 +268,6 @@ public class GraphicalUserInterface extends JFrame {
 
     public void message(String message) {
         this.textPane.setText(message);
-    }
-
-    public void setDirectionPlayers(TreeMap<String, String> tree) {
-        this.directionPlayer = tree;
     }
 
     public int getSelectedCard() {
