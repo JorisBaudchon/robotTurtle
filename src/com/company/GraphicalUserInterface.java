@@ -17,7 +17,6 @@ public class GraphicalUserInterface extends JFrame {
 
     JTextPane textPane = new JTextPane();
     private JFrame window = new JFrame();
-    public JButton[] btnCard = new JButton[5];
     public JButton[][] btnGrid = new JButton[8][8];
     public JLabel nbOfIceWall = new JLabel("1");
     public JLabel nbOfWall = new JLabel("1");
@@ -78,7 +77,7 @@ public class GraphicalUserInterface extends JFrame {
         }
     };
 
-    JPanel panelHand = new JPanel(new GridLayout(1, 5));
+
     ImageIcon imgBackground = new ImageIcon("images/background.jpeg");
     //Image img = background.getImage();
 
@@ -105,30 +104,6 @@ public class GraphicalUserInterface extends JFrame {
         this.panelGrid.setBounds(300, 60, 500, 500);
         this.bigPanel.add(this.panelGrid);
 
-        this.panelHand.setBounds(350, 600, 410, 146);
-        this.bigPanel.add(this.panelHand);
-
-
-        //Boutons de la main du joueur
-        for (int i = 0; i < btnCard.length; i++) {
-            JButton button = new JButton();
-            button.setVisible(true);
-            button.setName(i + ";0");
-            button.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    JButton buttonH = (JButton) e.getSource();
-                    if (buttonH.getIcon() == null) {
-                        actionHand = false;
-                    } else {
-                        String[] temp = buttonH.getName().split(";");
-                        indexHand = Integer.parseInt(temp[0]);
-                        actionHand = true;
-                    }
-                }
-            });
-            btnCard[i] = button;
-            this.panelHand.add(btnCard[i]);
-        }
 
 
         //Boutons du plateau
@@ -152,25 +127,6 @@ public class GraphicalUserInterface extends JFrame {
             }
         }
 
-
-        JButton btnValidCard = new JButton("Valider");
-        btnValidCard.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        btnValidCard.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                actionBtnValidCard = true;
-            }
-        });
-        btnValidCard.setBounds(830, 650, 150, 50);
-        this.bigPanel.add(btnValidCard);
-
-        JButton btnDiscard = new JButton("Defausser");
-        btnDiscard.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        btnDiscard.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-            }
-        });
-        btnDiscard.setBounds(1030, 650, 115, 50);
-        this.bigPanel.add(btnDiscard);
 
 
         this.textPane.setBounds(810, 65, 207, 403);
@@ -228,33 +184,6 @@ public class GraphicalUserInterface extends JFrame {
 
     }
 
-    
-
-    public void setHand(List<Card> playerHand) {
-        if (playerHand.size() < 5) {
-            for (int i = playerHand.size(); i < 5; i++) {
-                btnCard[i].setBackground(null);
-                btnCard[i].setIcon(null);
-            }
-        }
-
-        for (int i = 0; i < playerHand.size(); i++) {
-            switch (playerHand.get(i).cardType) {
-                case 'B':
-                    btnCard[i].setIcon(BlueCard);
-                    break;
-                case 'Y':
-                    btnCard[i].setIcon(YellowCard);
-                    break;
-                case 'P':
-                    btnCard[i].setIcon(PurpleCard);
-                    break;
-                case 'L':
-                    btnCard[i].setIcon(LaserCard);
-                    break;
-            }
-        }
-    }
     
     
     public void setNbWall(int[] gridNbOfWall) {
