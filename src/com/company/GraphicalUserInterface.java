@@ -19,8 +19,8 @@ public class GraphicalUserInterface extends JFrame {
     private JFrame window = new JFrame();
     public JButton[] btnCard = new JButton[5];
     public JButton[][] btnGrid = new JButton[8][8];
-    private JLabel nbOfIceWall = new JLabel("1");
-    private JLabel nbOfWall = new JLabel("1");
+    public JLabel nbOfIceWall = new JLabel("1");
+    public JLabel nbOfWall = new JLabel("1");
     private boolean NoIceWall = false;
     private boolean NoWall = false;
     private String alertPlayer;
@@ -41,10 +41,29 @@ public class GraphicalUserInterface extends JFrame {
     ImageIcon GreenJewel = new ImageIcon(new ImageIcon("images/GreenJewel.png").getImage().getScaledInstance(53, 53, Image.SCALE_DEFAULT));
     ImageIcon BlueJewel = new ImageIcon(new ImageIcon("images/BlueJewel.png").getImage().getScaledInstance(53, 53, Image.SCALE_DEFAULT));
     ImageIcon PurpleJewel = new ImageIcon(new ImageIcon("images/PurpleJewel.png").getImage().getScaledInstance(53, 53, Image.SCALE_DEFAULT));
-    public ImageIcon OrangeTurtle = new ImageIcon(new ImageIcon("images/OrangeTurtle.png").getImage().getScaledInstance(53, 53, Image.SCALE_DEFAULT));
-    ImageIcon GreenTurtle = new ImageIcon(new ImageIcon("images/GreenTurtle.png").getImage().getScaledInstance(53, 53, Image.SCALE_DEFAULT));
-    ImageIcon BlueTurtle = new ImageIcon(new ImageIcon("images/BlueTurtle.png").getImage().getScaledInstance(53, 53, Image.SCALE_DEFAULT));
-    ImageIcon YellowTurtle = new ImageIcon(new ImageIcon("images/YellowTurtle.png").getImage().getScaledInstance(53, 53, Image.SCALE_DEFAULT));
+    ImageIcon orangeTurtleS = new ImageIcon(new ImageIcon("images/orangeTurtleS.png").getImage().getScaledInstance(53, 53, Image.SCALE_DEFAULT));
+    ImageIcon orangeTurtleN = new ImageIcon(new ImageIcon("images/orangeTurtleN.png").getImage().getScaledInstance(53, 53, Image.SCALE_DEFAULT));
+    ImageIcon orangeTurtleO = new ImageIcon(new ImageIcon("images/orangeTurtleO.png").getImage().getScaledInstance(53, 53, Image.SCALE_DEFAULT));
+    ImageIcon orangeTurtleE = new ImageIcon(new ImageIcon("images/orangeTurtleE.png").getImage().getScaledInstance(53, 53, Image.SCALE_DEFAULT));
+    ImageIcon greenTurtleS = new ImageIcon(new ImageIcon("images/greenTurtleS.png").getImage().getScaledInstance(53, 53, Image.SCALE_DEFAULT));
+    ImageIcon greenTurtleN = new ImageIcon(new ImageIcon("images/greenTurtleN.png").getImage().getScaledInstance(53, 53, Image.SCALE_DEFAULT));
+    ImageIcon greenTurtleO = new ImageIcon(new ImageIcon("images/greenTurtleO.png").getImage().getScaledInstance(53, 53, Image.SCALE_DEFAULT));
+    ImageIcon greenTurtleE = new ImageIcon(new ImageIcon("images/greenTurtleE.png").getImage().getScaledInstance(53, 53, Image.SCALE_DEFAULT));
+    ImageIcon blueTurtleS = new ImageIcon(new ImageIcon("images/blueTurtleS.png").getImage().getScaledInstance(53, 53, Image.SCALE_DEFAULT));
+    ImageIcon blueTurtleN = new ImageIcon(new ImageIcon("images/blueTurtleN.png").getImage().getScaledInstance(53, 53, Image.SCALE_DEFAULT));
+    ImageIcon blueTurtleO = new ImageIcon(new ImageIcon("images/blueTurtleO.png").getImage().getScaledInstance(53, 53, Image.SCALE_DEFAULT));
+    ImageIcon blueTurtleE = new ImageIcon(new ImageIcon("images/blueTurtleE.png").getImage().getScaledInstance(53, 53, Image.SCALE_DEFAULT));
+    ImageIcon yellowTurtleS = new ImageIcon(new ImageIcon("images/yellowTurtleS.png").getImage().getScaledInstance(53, 53, Image.SCALE_DEFAULT));
+    ImageIcon yellowTurtleN = new ImageIcon(new ImageIcon("images/yellowTurtleN.png").getImage().getScaledInstance(53, 53, Image.SCALE_DEFAULT));
+    ImageIcon yellowTurtleO = new ImageIcon(new ImageIcon("images/yellowTurtleO.png").getImage().getScaledInstance(53, 53, Image.SCALE_DEFAULT));
+    ImageIcon yellowTurtleE = new ImageIcon(new ImageIcon("images/yellowTurtleE.png").getImage().getScaledInstance(53, 53, Image.SCALE_DEFAULT));
+
+    public void setNbOfIceWall(JLabel nbOfIceWall){
+        this.nbOfIceWall = nbOfIceWall;
+    }
+    public void setNbOfWall(JLabel nbOfWall){
+        this.nbOfWall = nbOfWall;
+    }
 
     JPanel panelGrid = new JPanel(new GridLayout(8, 8)) {
         @Override
@@ -59,14 +78,6 @@ public class GraphicalUserInterface extends JFrame {
             }
         }
     };
-
-    public void setNbOfIceWall(JLabel nbOfIceWall) {
-        this.nbOfIceWall = nbOfIceWall;
-    }
-
-    public void setNbOfWall(JLabel nbOfWall) {
-        this.nbOfWall = nbOfWall;
-    }
 
     JPanel panelHand = new JPanel(new GridLayout(1, 5));
     ImageIcon imgBackground = new ImageIcon("images/background.jpeg");

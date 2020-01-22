@@ -1,5 +1,6 @@
 package com.company;
 
+import javax.swing.*;
 import java.util.*;
 
 class Game {
@@ -10,6 +11,7 @@ class Game {
     private ArrayList<Player> orderedPlayers = new ArrayList<>();
     private Grid grid = new Grid();
     private GraphicalUserInterface graphicalUserInterface;
+    private ArrayList<Player> finishedPlayers = new ArrayList<>();
 
     public void initGame() {
         System.out.println("Bienvenue au jeu ROBOT TURTLES !");
@@ -44,6 +46,14 @@ class Game {
                     for (Player player : orderedPlayers) {
                         turn(player);
                     }
+                }
+                int point = numberOfPlayers - 1;
+                for (int i = 0; i < numberOfPlayers - 1; i++) {
+                    finishedPlayers.get(i).setScore(finishedPlayers.get(i).getScore() + point);
+                    point = point--;
+                }
+                for (int i = 0; i < numberOfPlayers; i++) {
+                    System.out.println("Le joueur " + orderedPlayers.get(i).getPseudo() + "a : " + orderedPlayers.get(i).getScore() +" points");
                 }
             }
         } while (end);
@@ -105,43 +115,43 @@ class Game {
                 orderedPlayers.get(0).setPositionX(0);
                 orderedPlayers.get(0).setPositionY(1);
                 orderedPlayers.get(0).setColor("orange");
-                graphicalUserInterface.btnGrid[0][1].setIcon(graphicalUserInterface.OrangeTurtle);
+                graphicalUserInterface.btnGrid[0][1].setIcon(graphicalUserInterface.orangeTurtleS);
                 orderedPlayers.get(1).setPositionX(0);
                 orderedPlayers.get(1).setPositionY(5);
                 orderedPlayers.get(1).setColor("green");
-                graphicalUserInterface.btnGrid[0][5].setIcon(graphicalUserInterface.GreenTurtle);
+                graphicalUserInterface.btnGrid[0][5].setIcon(graphicalUserInterface.greenTurtleS);
                 break;
             case 3:
                 orderedPlayers.get(0).setPositionX(0);
                 orderedPlayers.get(0).setPositionY(0);
                 orderedPlayers.get(0).setColor("orange");
-                graphicalUserInterface.btnGrid[0][0].setIcon(graphicalUserInterface.OrangeTurtle);
+                graphicalUserInterface.btnGrid[0][0].setIcon(graphicalUserInterface.orangeTurtleS);
                 orderedPlayers.get(1).setPositionX(0);
                 orderedPlayers.get(1).setPositionY(3);
                 orderedPlayers.get(1).setColor("green");
-                graphicalUserInterface.btnGrid[0][3].setIcon(graphicalUserInterface.GreenTurtle);
+                graphicalUserInterface.btnGrid[0][3].setIcon(graphicalUserInterface.greenTurtleS);
                 orderedPlayers.get(2).setPositionX(0);
                 orderedPlayers.get(2).setPositionY(6);
                 orderedPlayers.get(2).setColor("blue");
-                graphicalUserInterface.btnGrid[0][6].setIcon(graphicalUserInterface.BlueTurtle);
+                graphicalUserInterface.btnGrid[0][6].setIcon(graphicalUserInterface.blueTurtleS);
                 break;
             case 4:
                 orderedPlayers.get(0).setPositionX(0);
                 orderedPlayers.get(0).setPositionY(0);
                 orderedPlayers.get(0).setColor("orange");
-                graphicalUserInterface.btnGrid[0][0].setIcon(graphicalUserInterface.OrangeTurtle);
+                graphicalUserInterface.btnGrid[0][0].setIcon(graphicalUserInterface.orangeTurtleS);
                 orderedPlayers.get(1).setPositionX(0);
                 orderedPlayers.get(1).setPositionY(2);
                 orderedPlayers.get(1).setColor("green");
-                graphicalUserInterface.btnGrid[0][2].setIcon(graphicalUserInterface.GreenTurtle);
+                graphicalUserInterface.btnGrid[0][2].setIcon(graphicalUserInterface.greenTurtleS);
                 orderedPlayers.get(2).setPositionX(0);
                 orderedPlayers.get(2).setPositionY(5);
                 orderedPlayers.get(2).setColor("blue");
-                graphicalUserInterface.btnGrid[0][5].setIcon(graphicalUserInterface.BlueTurtle);
+                graphicalUserInterface.btnGrid[0][5].setIcon(graphicalUserInterface.blueTurtleS);
                 orderedPlayers.get(3).setPositionX(0);
                 orderedPlayers.get(3).setPositionY(7);
                 orderedPlayers.get(3).setColor("yellow");
-                graphicalUserInterface.btnGrid[0][7].setIcon(graphicalUserInterface.YellowTurtle);
+                graphicalUserInterface.btnGrid[0][7].setIcon(graphicalUserInterface.yellowTurtleS);
                 break;
         }
 
@@ -165,30 +175,22 @@ class Game {
                 nbFinishedPlayers = nbFinishedPlayers + 1;
             }
         }
-        if (numberOfPlayers == 2) {
-            if (nbFinishedPlayers == 1) {
-                return true;
-            } else {
-                return false;
-            }
-        } else if (numberOfPlayers == 3 || numberOfPlayers == 4) {
-            if (nbFinishedPlayers == 2) {
-                return true;
-            } else {
-                return false;
-            }
+        if (nbFinishedPlayers >= players.size() - 1) {
+            return true;
+        } else {
+            return false;
         }
-        return false;
     }
 
     private void turn(Player player) {
-        int entre;
+        int entre = 0;
         System.out.println("C'est le tour de " + player.getPseudo());
         grid.displayGridConsole();
         showCardHand(player);
         showWallCardHand(player);
         showProgram(player);
         do {
+            entre = 0;
             try {
                 System.out.println("Que souhaitez vous faire ?");
                 System.out.println("Entrez 1 pour COMPLETER LE PROGRAMME");
@@ -201,29 +203,31 @@ class Game {
         } while (!(entre == 1) && !(entre == 2) && !(entre == 3));
         switch (entre) {
             case 1:
-                int programCard;
+                int programCard = 0;
                 String wantChangeProgram = "";
                 do {
                     for (int i = 0; i < (player.getCardHand()).size(); i++) {
                         System.out.print((i + 1) + ". ");
                         System.out.println(player.hand.get(i).getCardType());
                     }
-                    programCard = 0;
                     do {
                         try {
                             System.out.println("Quelle carte voulez vous ajouter au programme ?");
                             programCard = Integer.parseInt(scNb.nextLine());
                         } catch (Exception e) {
+                            programCard = -1;
                         }
-                    } while (programCard >= 0 && programCard <= player.hand.size());
+                    } while (programCard <= 0 || programCard >= player.getCardHand().size() + 1);
                     programCard = programCard - 1;
-                    player.program.add(player.hand.get(programCard));
+                    player.program.add(player.getCardHand().get(programCard));
                     player.discardCard(programCard);
                     if (!player.hand.isEmpty()) {
                         System.out.println("Voulez vous ajouter une autre carte ?");
                         do {
                             wantChangeProgram = scTxt.nextLine();
                         } while (!wantChangeProgram.equals("oui") && !wantChangeProgram.equals("non") && !wantChangeProgram.equals("o") && !wantChangeProgram.equals("n"));
+                    } else {
+                        wantChangeProgram = "n";
                     }
                 } while (wantChangeProgram.equals("oui") || wantChangeProgram.equals("o"));
                 discardEndTurn(player);
@@ -231,15 +235,17 @@ class Game {
             case 2:
                 if (!player.wallCardHand.isEmpty()) {
                     int wallCardChoosed = 0;
-                    try {
-                        System.out.println("Quel mur voulez vous jouer ?");
-                        for (int i = 0; i < (player.getWallCardHand()).size(); i++) {
-                            System.out.print((i + 1) + ". ");
-                            System.out.println(player.wallCardHand.get(i).getWallCardType());
-                        }
-                        wallCardChoosed = Integer.parseInt(scNb.nextLine());
-                    } catch (Exception e) {
+                    for (int i = 0; i < (player.getWallCardHand()).size(); i++) {
+                        System.out.print((i + 1) + ". ");
+                        System.out.println(player.wallCardHand.get(i).getWallCardType());
                     }
+                    do {
+                        try {
+                            System.out.println("Quel mur voulez vous jouer ?");
+                            wallCardChoosed = Integer.parseInt(scNb.nextLine());
+                        } catch (Exception e) {
+                        }
+                    } while (wallCardChoosed <= 0 || wallCardChoosed > player.wallCardHand.size());
                     int xWall;
                     int yWall;
                     boolean wallValide = false;
@@ -248,20 +254,34 @@ class Game {
                         yWall = 0;
                         grid.displayGridConsole();
                         System.out.println("A quelles coordonnées souhaitez vous le placer ?");
-                        try {
-                            System.out.println("X ?");
-                            xWall = scNb.nextInt();
-                        } catch (Exception e) {
-                        }
-                        try {
-                            System.out.println("Y ?");
-                            yWall = scNb.nextInt();
-                        } catch (Exception e) {
-                        }
+                        do {
+                            try {
+                                System.out.println("X ?");
+                                xWall = scNb.nextInt();
+                            } catch (Exception e) {
+                            }
+                        } while (xWall < 0 || xWall > 7);
+                        do {
+                            try {
+                                System.out.println("Y ?");
+                                yWall = scNb.nextInt();
+                            } catch (Exception e) {
+                            }
+                        } while (yWall < 0 || yWall > 7);
+                        wallCardChoosed = wallCardChoosed - 1;
                         if (grid.grid[xWall][yWall].getState() == 'E') {
                             System.out.println(player.wallCardHand.get(wallCardChoosed).getWallCardType());
                             grid.grid[xWall][yWall].setState(player.wallCardHand.get(wallCardChoosed).getWallCardType());
                             System.out.println(grid.grid[xWall][yWall].getState());
+                            player.wallCardHand.remove(wallCardChoosed);
+                            switch (player.wallCardHand.get(wallCardChoosed).getWallCardType()) {
+                                case 'S':
+                                    graphicalUserInterface.btnGrid[xWall][yWall].setIcon(graphicalUserInterface.Wall);
+                                    break;
+                                case 'I':
+                                    graphicalUserInterface.btnGrid[xWall][yWall].setIcon(graphicalUserInterface.IceWall);
+                                    break;
+                            }
                             wallValide = true;
                         } else {
                             System.out.println("Cet emplacement n'est pas valide, choisissez en un autre.");
@@ -271,6 +291,8 @@ class Game {
                     showCardHand(player);
                     discardEndTurn(player);
                     showCardHand(player);
+                } else {
+                    System.out.println("Vous ne possédez plus de murs à jouer !");
                 }
                 break;
             case 3:
@@ -278,16 +300,16 @@ class Game {
                     Move move = new Move();
                     switch (card.getCardType()) {
                         case 'B':
-                            move.moveForward(player, grid);
+                            move.moveForward(player, grid, numberOfPlayers, finishedPlayers, players, graphicalUserInterface);
                             break;
                         case 'Y':
-                            move.leftRotation(player);
+                            move.rightRotation(player, graphicalUserInterface);
                             break;
                         case 'P':
-                            move.rightRotation(player);
+                            move.leftRotation(player, graphicalUserInterface);
                             break;
                         case 'L':
-                            move.laserShot(player, players, numberOfPlayers, grid);
+                            move.laserShot(player, players, numberOfPlayers, grid, graphicalUserInterface);
                             break;
                     }
                 }
@@ -295,52 +317,88 @@ class Game {
                 showCardHand(player);
                 break;
         }
+        player.drawUntilHandIsFull(player.getCardHand().size());
     }
 
 
     private void showWallCardHand(Player player) {
         System.out.print("Voici vos murs disponibles :");
+        int w = 0;
+        int j = 0;
+        graphicalUserInterface.bigPanel.remove(graphicalUserInterface.nbOfWall);
+        graphicalUserInterface.bigPanel.remove(graphicalUserInterface.nbOfIceWall);
         for (int i = 0; i < (player.getWallCardHand()).size(); i++) {
             System.out.print(player.wallCardHand.get(i).getWallCardType() + "  ");
+            if (player.wallCardHand.get(i).getWallCardType() == 'W') {
+                w = w + 1;
+            } else {
+                j = j + 1;
+            }
         }
+        graphicalUserInterface.setNbOfIceWall(new JLabel("" + w + ""));
+        graphicalUserInterface.setNbOfIceWall(new JLabel("" + j + ""));
+        graphicalUserInterface.bigPanel.add(graphicalUserInterface.nbOfWall);
+        graphicalUserInterface.bigPanel.add(graphicalUserInterface.nbOfIceWall);
     }
 
     private void showCardHand(Player player) {
         System.out.print("Voici votre main :");
         for (int i = 0; i < (player.getCardHand()).size(); i++) {
             System.out.print(player.hand.get(i).getCardType() + "  ");
+            switch (player.getCardHand().get(i).cardType) {
+                case 'B':
+                    graphicalUserInterface.btnCard[i].setIcon(graphicalUserInterface.BlueCard);
+                    break;
+                case 'P':
+                    graphicalUserInterface.btnCard[i].setIcon(graphicalUserInterface.PurpleCard);
+                    break;
+                case 'Y':
+                    graphicalUserInterface.btnCard[i].setIcon(graphicalUserInterface.YellowCard);
+                    break;
+                case 'L':
+                    graphicalUserInterface.btnCard[i].setIcon(graphicalUserInterface.LaserCard);
+                    break;
+            }
         }
     }
 
     private void discardEndTurn(Player player) {
-        String wantDefausse;
-        System.out.println("Souhaitez vous défausser des cartes ?");
-        do {
-            wantDefausse = scTxt.nextLine();
-        } while (!wantDefausse.equals("oui") && !wantDefausse.equals("non") && !wantDefausse.equals("o") && !wantDefausse.equals("n"));
-        if (wantDefausse.equals("oui") || wantDefausse.equals("o")) {
-            showCardHand(player);
-            int discardedCard;
-            String wantToDiscard;
-            int deletedCardCount = 0;
+        if (player.getCardHand().isEmpty()) {
+            System.out.println("Votre main est vide, vous ne pouvez rien défausser.");
+        } else {
+            String wantDefausse;
+            System.out.println("Souhaitez vous défausser des cartes ?");
             do {
-                System.out.println("Quelle carte voulez vous défausser ?");
-                for (int i = 0; i < (player.getCardHand()).size(); i++) {
-                    System.out.print((i + 1) + ". ");
-                    System.out.println(player.hand.get(i).getCardType());
-                }
-                discardedCard = scNb.nextInt();
-                discardedCard = discardedCard - 1;
-                deletedCardCount = deletedCardCount + 1;
-                player.discardCard(discardedCard);
-                System.out.println("Voulez vous supprimer une nouvelle carte ?");
+                wantDefausse = scTxt.nextLine();
+            } while (!wantDefausse.equals("oui") && !wantDefausse.equals("non") && !wantDefausse.equals("o") && !wantDefausse.equals("n"));
+            if (wantDefausse.equals("oui") || wantDefausse.equals("o")) {
+                showCardHand(player);
+                int discardedCard = -1;
+                String wantToDiscard;
+                int deletedCardCount = 0;
                 do {
-                    wantToDiscard = scTxt.nextLine();
-                } while (!wantToDiscard.equals("oui") && !wantToDiscard.equals("non") && !wantToDiscard.equals("o") && !wantToDiscard.equals("n"));
-            } while (wantToDiscard.equals("oui") || wantToDiscard.equals("o"));
-            player.drawUntilHandIsFull(deletedCardCount);
+                    for (int i = 0; i < (player.getCardHand()).size(); i++) {
+                        System.out.print((i + 1) + ". ");
+                        System.out.println(player.hand.get(i).getCardType());
+                    }
+                    do {
+                        try {
+                            System.out.println("Quelle carte voulez vous défausser ?");
+                            discardedCard = Integer.parseInt(scNb.nextLine());
+                        } catch (Exception e) {
+                        }
+                    } while (discardedCard <= 0 || discardedCard > player.getCardHand().size() + 1);
+                    discardedCard = discardedCard - 1;
+                    deletedCardCount = deletedCardCount + 1;
+                    player.discardCard(discardedCard);
+                    System.out.println("Voulez vous supprimer une nouvelle carte ?");
+                    do {
+                        wantToDiscard = scTxt.nextLine();
+                    } while (!wantToDiscard.equals("oui") && !wantToDiscard.equals("non") && !wantToDiscard.equals("o") && !wantToDiscard.equals("n"));
+                } while (wantToDiscard.equals("oui") || wantToDiscard.equals("o"));
+                player.drawUntilHandIsFull(player.getCardHand().size());
+            }
         }
-
     }
 
     private void showProgram(Player player) {

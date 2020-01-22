@@ -25,12 +25,22 @@ class Player {
     private int nbOfStoneWallCards = 3;
     private int nbOfIceWallCards = 2;
     private boolean finished;
+    private int score;
 
     Player(String pseudo) {
         this.pseudo = pseudo;
         this.orientation = 'S';
         this.playerTurn = 0;
+        this.score=0;
         this.finished = false;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public int getScore() {
+        return score;
     }
 
     int getPlayerTurn() {
@@ -110,7 +120,7 @@ class Player {
     }
 
     void discardCard(int deletedCard) {
-        this.discard.add(this.deck.get(0));
+        this.discard.add(this.hand.get(deletedCard));
         this.hand.remove(deletedCard);
     }
 
@@ -154,4 +164,9 @@ class Player {
     void setColor(String color) {
         this.color = color;
     }
+
+    public void setFinished(boolean finished) {
+        this.finished = finished;
+    }
 }
+
