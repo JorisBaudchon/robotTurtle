@@ -31,7 +31,6 @@ public class GraphicalUserInterface extends JFrame {
     private boolean actionBtnValidCard;
     private int[] coord = new int[2];
     private int indexHand;
-    private TreeMap<String, String> directionPlayer = new TreeMap<>();
     ImageIcon YellowCard = new ImageIcon(new ImageIcon("images/cards/YellowCard.png").getImage().getScaledInstance(85, 150, Image.SCALE_DEFAULT));
     ImageIcon BlueCard = new ImageIcon(new ImageIcon("images/cards/BlueCard.png").getImage().getScaledInstance(85, 150, Image.SCALE_DEFAULT));
     ImageIcon LaserCard = new ImageIcon(new ImageIcon("images/cards/LaserCard.png").getImage().getScaledInstance(85, 150, Image.SCALE_DEFAULT));
@@ -190,7 +189,7 @@ public class GraphicalUserInterface extends JFrame {
                 if (!NoWall) {
                     actionWall = true;
                 } else {
-                    message("Les réserves de mur sont épuisés");
+                    msgConsole("Les réserves de mur sont épuisés");
                     System.out.println(alertPlayer);
                 }
                 System.out.println(selectedWall);
@@ -207,7 +206,7 @@ public class GraphicalUserInterface extends JFrame {
                 if (!NoIceWall) {
                     actionWall = true;
                 } else {
-                    message("Les réserves de mur de glace sont épuisés");
+                    msgConsole("Les réserves de mur de glace sont épuisés");
                 }
                 System.out.println(selectedWall);
             }
@@ -278,59 +277,11 @@ public class GraphicalUserInterface extends JFrame {
     }
     
 
-    public void message(String message) {
-        this.textPane.setText(message);
+    public void msgConsole(String msgConsole) {
+        this.textPane.setText(msgConsole);
     }
 
-    public void setDirectionPlayers(TreeMap<String, String> tree) {
-        this.directionPlayer = tree;
-    }
-
-    public int getSelectedCard() {
-        actionGrid = false; // on met l'action false car le mur a été lu
-        actionHand = false; // on met toutes les actions à faux
-        actionWall = false;
-        return indexHand;
-    }
-
-    public String getSelectedWall() {
-        actionGrid = false;
-        actionHand = false;
-        actionWall = false;
-        return selectedWall;
-    }
-
-    public int[] getCoord() {
-        actionWall = false;
-        actionGrid = false;
-        actionHand = false;
-        return coord;
-    }
-
-    public boolean getActionWall() {
-        return actionWall;
-    }
-
-    public boolean getActionGrid() {
-        return actionGrid;
-    }
-
-    public boolean getActionHand() {
-        return actionHand;
-    }
-
-    public boolean getActionFinish() {
-        if (actionBtnValidCard) {
-            actionGrid = false;
-            actionHand = false;
-            actionWall = false;
-            actionBtnValidCard = false;
-            return true;
-        } else {
-            return false;
-        }
-
-    }
+    
 
 
 }
